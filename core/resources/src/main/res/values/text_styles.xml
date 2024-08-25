@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Bold">
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+
+    <style name="ExtraBold">
+        <item name="android:fontFamily">@font/extrabold</item>
+    </style>
+
+    <style name="Regular">
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+
+    <style name="Medium">
+        <item name="android:fontFamily">@font/medium</item>
+    </style>
+</resources>

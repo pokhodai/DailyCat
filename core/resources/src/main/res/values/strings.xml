@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CatSchoolApp</string>
+    
+    <string name="today">Today</string>
+    <string name="schedule">Schedule</string>
+    <string name="assignments">Assignments</string>
+    <string name="settings">Settings</string>
+</resources>

@@ -3,6 +3,8 @@ import com.cat.school.local.buildSrc.AppConfigPlugin
 plugins {
     id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.jetbrains.kotlin.android.get().pluginId)
+    id(libs.plugins.google.devtools.ksp.get().pluginId)
+    id(libs.plugins.google.dagger.hilt.get().pluginId)
 }
 
 apply<AppConfigPlugin>()
@@ -16,4 +18,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 }

@@ -39,11 +39,6 @@ class AppConfigPlugin : Plugin<Project> {
                     isMinifyEnabled = false
                     proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
                 }
-
-                getByName("debug") {
-                    applicationIdSuffix = ".debug"
-                    isDebuggable = true
-                }
             }
 
             compileOptions {

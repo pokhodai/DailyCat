@@ -1,7 +1,6 @@
 package com.cat.school.local.buildSrc.config
 
 object AppConfig {
-    const val APPLICATION_ID = "com.cat.school.local"
     const val COMPILE_SDK = 34
     const val MIN_SDK = 24
     const val TARGET_SDK = 34

@@ -1,5 +1,4 @@
 import com.cat.school.local.buildSrc.AppConfigPlugin
-import com.cat.school.local.buildSrc.config.AppConfig
 
 plugins {
     id(libs.plugins.android.application.get().pluginId)
@@ -12,10 +11,6 @@ apply<AppConfigPlugin>()
 
 android {
     namespace = "com.cat.school.local"
-
-    defaultConfig {
-        applicationId = AppConfig.APPLICATION_ID
-    }
 
     buildFeatures {
         viewBinding = true

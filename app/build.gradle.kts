@@ -1,4 +1,5 @@
 import com.cat.school.local.buildSrc.AppConfigPlugin
+import com.cat.school.local.buildSrc.config.AppConfig
 
 plugins {
     id(libs.plugins.android.application.get().pluginId)
@@ -13,7 +14,7 @@ android {
     namespace = "com.cat.school.local"
 
     defaultConfig {
-        applicationId = "com.cat.school.local"
+        applicationId = AppConfig.APPLICATION_ID
     }
 
     buildFeatures {

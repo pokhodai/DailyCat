@@ -23,13 +23,20 @@ dependencyResolutionManagement {
 
 rootProject.name = "CatSchoolApp"
 include(":app")
-include(":core:db")
-include(":core:router")
-include(":core:uikit")
-include(":core:resources")
-include(":core:repository")
 
-include(":feature:today")
-include(":feature:assignments")
-include(":feature:schedule")
-include(":feature:settings")
+include(
+    ":db",
+    ":data",
+    ":domain"
+)
+
+include(
+    ":core:router",
+    ":core:uikit",
+    ":core:common"
+)
+
+include(":presentation:today")
+include(":presentation:assignments")
+include(":presentation:schedule")
+include(":presentation:settings")

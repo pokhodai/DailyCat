@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Bold">
+        <item name="android:fontFamily">@font/bold</item>
+    </style>
+
+    <style name="ExtraBold">
+        <item name="android:fontFamily">@font/extrabold</item>
+    </style>
+
+    <style name="Regular">
+        <item name="android:fontFamily">@font/regular</item>
+    </style>
+
+    <style name="Medium">
+        <item name="android:fontFamily">@font/medium</item>
+    </style>
+
+    <style name="Regular.12">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">14dp</item>
+    </style>
+
+    <style name="Regular.10">
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">12dp</item>
+    </style>
+
+    <style name="Regular.14">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">17dp</item>
+    </style>
+
+    <style name="Bold.10">
+        <item name="android:textSize">10sp</item>
+        <item name="lineHeight">12dp</item>
+    </style>
+
+    <style name="Bold.14">
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">17dp</item>
+    </style>
+
+    <style name="Bold.20">
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">24dp</item>
+    </style>
+
+    <style name="Bold.20.colortext0">
+        <item name="android:textColor">@color/textColor0</item>
+    </style>
+
+    <style name="Bold.20.colortext1">
+        <item name="android:textColor">@color/textColor1</item>
+    </style>
+
+    <style name="Regular.12.colortext1">
+        <item name="android:textColor">@color/textColor1</item>
+    </style>
+
+    <style name="Bold.10.colortext1">
+        <item name="android:textColor">@color/textColor1</item>
+    </style>
+
+    <style name="Regular.14.colortext0">
+        <item name="android:textColor">@color/textColor0</item>
+    </style>
+
+    <style name="Regular.12.colortext0">
+        <item name="android:textColor">@color/textColor0</item>
+    </style>
+</resources>

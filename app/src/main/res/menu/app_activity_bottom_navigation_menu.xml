@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@id/todayFragment"
+        android:id="@id/today_tab_nav_graph"
         android:icon="@drawable/ic_today"
-        android:title="@string/today" />
+        android:title="@string/tab_first_menu_today" />
 
     <item
-        android:id="@id/scheduleFragment"
+        android:id="@id/schedule_tab_nav_graph"
         android:icon="@drawable/ic_schedule"
-        android:title="@string/schedule" />
+        android:title="@string/tab_second_menu_schedule" />
 
     <item
-        android:id="@id/assignmentsFragment"
+        android:id="@id/assignments_tab_nav_graph"
         android:icon="@drawable/ic_assignments"
-        android:title="@string/assignments" />
+        android:title="@string/tab_third_menu_assignments" />
 
     <item
-        android:id="@id/settingsFragment"
+        android:id="@id/settings_tab_nav_graph"
         android:icon="@drawable/ic_settings"
-        android:title="@string/settings" />
+        android:title="@string/tab_fourth_menu_settings" />
 </menu>

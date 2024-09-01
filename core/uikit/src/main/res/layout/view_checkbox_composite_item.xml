@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/checkbox_composite_item_root"
+    tools:layout_height="wrap_content"
+    tools:layout_width="match_parent"
+    tools:parentTag="android.widget.FrameLayout">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/checkbox_item_content_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:id="@+id/checkbox_composite_item_check_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.cat.school.core.uikit.ui.checkbox.view.CheckboxItemView
+                android:id="@+id/checkbox_composite_item_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </FrameLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/checkbox_composite_item_name"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:ellipsize="end"
+            android:gravity="center|start"
+            android:maxLines="1"
+            android:paddingStart="4dp"
+            android:textAlignment="gravity"
+            android:textAppearance="@style/Regular.14.colortext0"
+            app:layout_constraintBottom_toBottomOf="@+id/checkbox_composite_item_check_container"
+            app:layout_constraintEnd_toStartOf="@+id/checkbox_composite_item_trailing"
+            app:layout_constraintStart_toEndOf="@+id/checkbox_composite_item_check_container"
+            app:layout_constraintTop_toTopOf="@+id/checkbox_composite_item_check_container"
+            tools:text="dlskldsklskldsdsklklsdklsdklsdkldsklds" />
+
+        <ImageView
+            android:id="@+id/checkbox_composite_item_trailing"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:padding="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/checkbox_composite_item_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/checkbox_composite_item_name"
+            tools:src="@drawable/ic_trash"
+            tools:visibility="visible" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/checkbox_composite_item_note"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Regular.12.colortext1"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkbox_composite_item_name"
+            tools:text="sdlkdsklsdllkdsklklsdklsdk\nlsdlkdlsklks\ndlksdlkdslkdslkldkslksdlskdskldlklskdlkds"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge>

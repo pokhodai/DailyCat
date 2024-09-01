@@ -1,6 +1,0 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Base.Theme.CatSchoolApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/backgroundColor1</item>
-        <item name="android:windowLightStatusBar">true</item>
-    </style>
-</resources>

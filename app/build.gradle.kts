@@ -23,13 +23,12 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
 
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
+    
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
 
@@ -37,10 +36,10 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     implementation(project(path = ":core:router"))
-    implementation(project(path = ":core:resources"))
+    implementation(project(path = ":core:uikit"))
 
-    implementation(project(path = ":feature:today"))
-    implementation(project(path = ":feature:assignments"))
-    implementation(project(path = ":feature:schedule"))
-    implementation(project(path = ":feature:settings"))
+    implementation(project(path = ":presentation:today"))
+    implementation(project(path = ":presentation:assignments"))
+    implementation(project(path = ":presentation:schedule"))
+    implementation(project(path = ":presentation:settings"))
 }

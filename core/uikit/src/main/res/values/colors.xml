@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="textColor0">#010618</color>
+    <color name="textColor1">#21283F</color>
+    <color name="textColor2">#94A3B8</color>
+
+    <color name="backgroundColor0">#FFFFFF</color>
+    <color name="backgroundColor0_inverse">#010618</color>
+    <color name="backgroundColor1">#99EBEBF5</color>
+    <color name="backgroundColor2">#99EBEBF5</color>
+
+    <color name="actionColor0">#4F90F0</color>
+    <color name="actionColor1">#A0C2F4</color>
+
+    <color name="successColor0">#4AD2C9</color>
+    <color name="successColor1">#CCEFEF</color>
+
+    <color name="warningColor0">#FFC374</color>
+    <color name="warningColor1">#CCEFEF</color>
+    
+    <color name="errorColor0">#F66B6B</color>
+    <color name="errorColor1">#F9CCCC</color>
+
+    <color name="transparent">#00000000</color>
+</resources>

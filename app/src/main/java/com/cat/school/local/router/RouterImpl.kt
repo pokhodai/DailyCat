@@ -10,8 +10,6 @@ import javax.inject.Singleton
 class RouterImpl @Inject constructor(): Router {
 
     private var _navController: WeakReference<NavController>? = null
-    private val navController: NavController
-        get() = _navController?.get()!!
 
     override fun setNavController(navController: NavController) {
         _navController = WeakReference(navController)

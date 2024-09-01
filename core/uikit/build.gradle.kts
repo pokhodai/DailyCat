@@ -10,6 +10,10 @@ apply<AppConfigPlugin>()
 android {
     namespace = "com.cat.school.core.uikit"
 
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     buildFeatures {
         viewBinding = true
     }

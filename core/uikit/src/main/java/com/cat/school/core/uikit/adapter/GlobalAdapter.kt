@@ -7,18 +7,23 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cat.school.core.uikit.adapter.diff.GlobalAdapterDiffCallback
 import com.cat.school.core.uikit.adapter.item.GlobalItem
+import com.cat.school.core.uikit.adapter.viewholders.CalendarItemViewHolder
+import com.cat.school.core.uikit.adapter.viewholders.TaskItemViewHolder
+import com.cat.school.core.uikit.ui.calendar.CalendarItem
+import com.cat.school.core.uikit.ui.calendar.CalendarItemView
+import com.cat.school.core.uikit.ui.task.TaskItemView
 
 class GlobalAdapter: ListAdapter<GlobalItem, RecyclerView.ViewHolder>(
     AsyncDifferConfig.Builder(
         GlobalAdapterDiffCallback()
     ).build()
 ) {
-
     private val asyncListDiffer = AsyncListDiffer(this, GlobalAdapterDiffCallback())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
-
+            CALENDAR_ITEM_VIEW_TYPE -> CalendarItemViewHolder(CalendarItemView(parent.context))
+            TASK_ITEM_VIEW_TYPE -> TaskItemViewHolder(TaskItemView(parent.context))
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
@@ -26,7 +31,8 @@ class GlobalAdapter: ListAdapter<GlobalItem, RecyclerView.ViewHolder>(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         when (holder) {
-
+            is CalendarItemViewHolder -> holder.bind((item as GlobalItem.CalendarItemWrap).state)
+            is TaskItemViewHolder -> holder.bind((item as GlobalItem.TaskItemWrap).state)
         }
     }
 
@@ -40,11 +46,13 @@ class GlobalAdapter: ListAdapter<GlobalItem, RecyclerView.ViewHolder>(
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            else -> 1
+            is GlobalItem.CalendarItemWrap -> CALENDAR_ITEM_VIEW_TYPE
+            is GlobalItem.TaskItemWrap -> TASK_ITEM_VIEW_TYPE
         }
     }
 
     private companion object {
-
+        const val CALENDAR_ITEM_VIEW_TYPE = 1
+        const val TASK_ITEM_VIEW_TYPE = 2
     }
 }

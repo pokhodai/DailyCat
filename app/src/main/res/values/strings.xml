@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CatDaily</string>
+    <string name="tab_first_menu_today">Today</string>
+    <string name="tab_second_menu_schedule">Schedule</string>
+    <string name="tab_third_menu_assignments">Assignments</string>
+    <string name="tab_fourth_menu_settings">Settings</string>
+</resources>

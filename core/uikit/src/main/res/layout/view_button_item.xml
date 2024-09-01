@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.FrameLayout"
+    android:id="@+id/button_item_root"
+    tools:layout_height="wrap_content"
+    tools:layout_width="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/button_item_content_container"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="10dp">
+
+            <ImageView
+                android:id="@+id/button_item_leading"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/button_item_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/button_item_text"
+                tools:src="@drawable/ic_cheveron_right"
+                tools:visibility="visible" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/button_item_text"
+                android:textAppearance="@style/Bold.14"
+                tools:text="Buttonsldklkdsdkl"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_item_leading"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/button_item_trailing"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/button_item_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_item_text"
+                app:layout_constraintTop_toTopOf="@+id/button_item_text"
+                tools:src="@drawable/ic_cheveron_right"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</merge>

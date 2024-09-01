@@ -7,7 +7,7 @@ class GlobalAdapterDiffCallback : DiffUtil.ItemCallback<GlobalItem>() {
     override fun areItemsTheSame(
         oldItem: GlobalItem,
         newItem: GlobalItem
-    ) = oldItem.id == newItem.id
+    ) = oldItem.provideId == newItem.provideId
 
     override fun areContentsTheSame(
         oldItem: GlobalItem,

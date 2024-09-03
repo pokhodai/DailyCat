@@ -25,7 +25,6 @@ rootProject.name = "CatSchoolApp"
 include(":app")
 
 include(
-    ":db",
     ":data",
     ":domain"
 )
@@ -36,7 +35,7 @@ include(
     ":core:common"
 )
 
-include(":presentation:today")
-include(":presentation:assignments")
-include(":presentation:schedule")
-include(":presentation:settings")
+include(":feature:today")
+include(":feature:assignments")
+include(":feature:schedule")
+include(":feature:settings")

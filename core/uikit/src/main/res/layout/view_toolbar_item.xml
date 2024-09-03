@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar_item_root"
+    tools:parentTag="android.widget.Toolbar"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    tools:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbar_item_content_container"
+        android:layout_width="match_parent"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="12dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/toolbar_item_leading"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_chevron_left"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/toolbar_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Title"
+            android:textAlignment="gravity"
+            android:paddingStart="12dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:gravity="center|start"
+            android:textAppearance="@style/Bold.20.colortext0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/toolbar_item_trailing_text"
+            app:layout_constraintStart_toEndOf="@+id/toolbar_item_leading"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/toolbar_item_trailing_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp"
+            android:textAppearance="@style/Bold.14.colorAction0"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Close"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</merge>

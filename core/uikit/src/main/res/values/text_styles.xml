@@ -46,6 +46,10 @@
         <item name="lineHeight">24dp</item>
     </style>
 
+    <style name="Bold.14.colorAction0">
+        <item name="android:textColor">@color/actionColor0</item>
+    </style>
+
     <style name="Bold.20.colortext0">
         <item name="android:textColor">@color/textColor0</item>
     </style>
@@ -64,6 +68,10 @@
 
     <style name="Regular.14.colortext0">
         <item name="android:textColor">@color/textColor0</item>
+    </style>
+
+    <style name="Regular.14.colorText1">
+        <item name="android:textColor">@color/textColor1</item>
     </style>
 
     <style name="Regular.12.colortext0">

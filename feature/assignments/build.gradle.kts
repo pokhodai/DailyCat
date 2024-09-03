@@ -1,7 +1,7 @@
 import com.cat.school.local.buildSrc.AppConfigPlugin
 
 plugins {
-    id(libs.plugins.android.application.get().pluginId)
+    id(libs.plugins.android.library.get().pluginId)
     id(libs.plugins.jetbrains.kotlin.android.get().pluginId)
     id(libs.plugins.google.devtools.ksp.get().pluginId)
     id(libs.plugins.google.dagger.hilt.get().pluginId)
@@ -10,7 +10,7 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.local"
+    namespace = "com.cat.school.feature.assignments"
 
     buildFeatures {
         viewBinding = true
@@ -23,23 +23,17 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.fragment.ktx)
-
+    implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
-    
-    implementation(libs.androidx.navigation.fragment)
-    implementation(libs.androidx.navigation.ui)
+
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    implementation(project(path = ":core:router"))
+    implementation(project(path = ":domain"))
+    implementation(project(path = ":core:common"))
     implementation(project(path = ":core:uikit"))
-
-    implementation(project(path = ":feature:today"))
-    implementation(project(path = ":feature:assignments"))
-    implementation(project(path = ":feature:schedule"))
-    implementation(project(path = ":feature:settings"))
 }

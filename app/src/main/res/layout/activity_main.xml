@@ -25,6 +25,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/root_nav_graph" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/app_activity_bottom_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:useCompatPadding="true"
+            app:fabSize="normal"
+            android:layout_gravity="end|bottom"
+            app:srcCompat="@drawable/ic_plus"
+            app:backgroundTint="@color/actionColor0"
+            app:layout_constraintBottom_toBottomOf="@+id/app_activity_root_container"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/app_activity_bottom_navigation"
             style="@style/Widget.MaterialComponents.BottomNavigationView"

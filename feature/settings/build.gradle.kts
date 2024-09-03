@@ -10,7 +10,11 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.data"
+    namespace = "com.cat.school.feature.settings"
+
+    buildFeatures {
+        viewBinding = true
+    }
 
     kotlinOptions {
         jvmTarget = "1.8"
@@ -19,13 +23,12 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
 
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
-
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)

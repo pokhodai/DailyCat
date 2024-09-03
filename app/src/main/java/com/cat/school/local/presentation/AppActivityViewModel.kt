@@ -13,6 +13,6 @@ class AppActivityViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun setNavController(navController: NavController) {
-        router.setNavController(navController)
+
     }
 }

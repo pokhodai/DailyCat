@@ -60,4 +60,16 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/today_floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:useCompatPadding="true"
+        android:layout_margin="16dp"
+        android:contentDescription="today_floating"
+        app:fabSize="normal"
+        app:backgroundTint="@color/actionColor0"
+        android:layout_gravity="bottom|right"
+        app:srcCompat="@drawable/ic_plus" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -10,14 +10,10 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.feature.today"
+    namespace = "com.cat.school.local.feature.today"
 
     buildFeatures {
         viewBinding = true
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
     }
 }
 
@@ -32,4 +28,6 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     implementation(project(path = ":core:uikit"))
+    implementation(project(path = ":core:nav-api"))
+    implementation(project(path = ":feature:today-api"))
 }

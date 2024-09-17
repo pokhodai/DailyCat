@@ -25,17 +25,22 @@ rootProject.name = "CatSchoolApp"
 include(":app")
 
 include(
-    ":data",
-    ":domain"
+    ":core:nav-api",
+    ":core:uikit",
+    ":core:common",
 )
 
 include(
-    ":core:router",
-    ":core:uikit",
-    ":core:common"
+    ":core:database",
+    ":core:database-api"
 )
 
-include(":feature:today")
+include(
+    ":feature:today",
+    ":feature:today-api"
+)
+
 include(":feature:assignments")
 include(":feature:schedule")
 include(":feature:settings")
+include(":feature:event")

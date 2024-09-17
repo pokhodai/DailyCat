@@ -13,7 +13,7 @@
         app:elevation="0dp"
         android:background="@color/transparent">
 
-        <com.cat.school.core.uikit.ui.toolbar.ToolbarItemView
+        <com.cat.school.local.core.uikit.ui.toolbar.ToolbarItemView
             android:id="@+id/creater_assignments_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -1,4 +1,4 @@
-package com.cat.school.core.managers
+package com.cat.school.core.common.managers
 
 import android.content.Context
 import android.graphics.drawable.Drawable

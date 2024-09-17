@@ -15,10 +15,6 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
@@ -33,7 +29,6 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    implementation(project(path = ":domain"))
     implementation(project(path = ":core:common"))
     implementation(project(path = ":core:uikit"))
 }

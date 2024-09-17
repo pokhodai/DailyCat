@@ -120,7 +120,7 @@
             android:id="@+id/task_item_settings"
             android:layout_width="16dp"
             android:layout_height="16dp"
-            android:src="@drawable/ic_settings"
+            android:src="@drawable/ic_task_settings"
             android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@+id/task_item_right"
             app:layout_constraintTop_toTopOf="@+id/task_item_top"
@@ -154,7 +154,7 @@
             app:layout_constraintTop_toBottomOf="@+id/task_item_place"
             tools:visibility="visible">
 
-            <com.cat.school.core.uikit.ui.badge.BadgeItemView
+            <com.cat.school.local.core.uikit.ui.badge.BadgeItemView
                 android:id="@+id/task_item_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

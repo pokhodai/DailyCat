@@ -8,11 +8,7 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.core.uikit"
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
+    namespace = "com.cat.school.local.core.uikit"
 
     buildFeatures {
         viewBinding = true

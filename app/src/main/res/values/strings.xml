@@ -5,4 +5,10 @@
     <string name="tab_second_menu_schedule">Schedule</string>
     <string name="tab_third_menu_assignments">Assignments</string>
     <string name="tab_fourth_menu_settings">Settings</string>
+
+    <item type="id" name="tab_today_id"/>
+    <item type="id" name="tab_assignments_id"/>
+    <item type="id" name="tab_schedule_id"/>
+    <item type="id" name="tab_settings_id"/>
+
 </resources>

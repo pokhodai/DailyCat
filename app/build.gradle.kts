@@ -5,6 +5,7 @@ plugins {
     id(libs.plugins.jetbrains.kotlin.android.get().pluginId)
     id(libs.plugins.google.devtools.ksp.get().pluginId)
     id(libs.plugins.google.dagger.hilt.get().pluginId)
+    id(libs.plugins.kotlin.parcelize.get().pluginId)
 }
 
 apply<AppConfigPlugin>()
@@ -15,14 +16,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
+
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
 
@@ -35,11 +32,16 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    implementation(project(path = ":core:router"))
+    implementation(libs.cicerone)
+
+    implementation(project(path = ":core:nav-api"))
     implementation(project(path = ":core:uikit"))
+    implementation(project(path = ":core:common"))
+    implementation(project(path = ":core:database"))
 
     implementation(project(path = ":feature:today"))
     implementation(project(path = ":feature:assignments"))
     implementation(project(path = ":feature:schedule"))
     implementation(project(path = ":feature:settings"))
+    implementation(project(path = ":feature:event"))
 }

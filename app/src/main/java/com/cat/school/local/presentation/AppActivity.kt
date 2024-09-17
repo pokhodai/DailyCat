@@ -9,9 +9,9 @@ import com.cat.school.local.R
 import com.cat.school.local.databinding.ActivityMainBinding
 import com.cat.school.local.common.ext.addItem
 import com.cat.school.local.model.TabItemEntry
-import com.cat.school.local.nav.provider.IActivityNavProvider
-import com.cat.school.local.nav.provider.IContainerNavProvider
-import com.cat.school.local.nav.LocalNavHolder
+import com.cat.school.local.nav.activity.LocalNavActivityHolder
+import com.cat.school.local.nav.activity.IActivityNavProvider
+import com.cat.school.local.nav.container.IContainerNavProvider
 import com.cat.school.local.screens.BottomNavScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
@@ -28,7 +28,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
     private val viewModel by viewModels<AppActivityViewModel>()
 
     @Inject
-    lateinit var localNavHolder: LocalNavHolder
+    lateinit var localNavActivityHolder: LocalNavActivityHolder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +42,11 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
 
     override fun onResume() {
         super.onResume()
-        localNavHolder.setProvider(this)
+        localNavActivityHolder.setProvider(this)
     }
 
     override fun onPause() {
-        localNavHolder.removeProvider()
+        localNavActivityHolder.removeProvider()
         super.onPause()
     }
 

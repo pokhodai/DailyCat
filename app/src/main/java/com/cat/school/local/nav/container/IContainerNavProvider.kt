@@ -1,4 +1,4 @@
-package com.cat.school.local.nav.provider
+package com.cat.school.local.nav.container
 
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router

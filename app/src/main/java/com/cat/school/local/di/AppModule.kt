@@ -1,6 +1,7 @@
 package com.cat.school.local.di
 
-import com.cat.school.local.nav.LocalNavHolder
+import com.cat.school.local.nav.activity.LocalNavActivityHolder
+import com.cat.school.local.nav.container.LocalNavContainerHolder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +14,13 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLocalNavHolder(): LocalNavHolder {
-        return LocalNavHolder()
+    fun provideLocalNavHolder(): LocalNavActivityHolder {
+        return LocalNavActivityHolder()
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalNavContainerHolder(): LocalNavContainerHolder {
+        return LocalNavContainerHolder()
     }
 }

@@ -5,7 +5,7 @@ import com.cat.school.local.presentation.tab.TabContainerFragment
 import com.cat.school.local.presentation.assignments.AssignmentsFragment
 import com.cat.school.presentation.schedule.ScheduleFragment
 import com.cat.school.presentation.settings.SettingsFragment
-import com.cat.school.local.presentation.today.TodayFragment
+import com.cat.school.local.presentation.task.TodayFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object BottomNavScreens {

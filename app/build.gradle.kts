@@ -33,13 +33,13 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     implementation(libs.cicerone)
+    implementation(project(":core:nav"))
 
-    implementation(project(path = ":core:nav-api"))
     implementation(project(path = ":core:uikit"))
     implementation(project(path = ":core:common"))
     implementation(project(path = ":core:database"))
+    implementation(project(":feature:task"))
 
-    implementation(project(path = ":feature:today"))
     implementation(project(path = ":feature:assignments"))
     implementation(project(path = ":feature:schedule"))
     implementation(project(path = ":feature:settings"))

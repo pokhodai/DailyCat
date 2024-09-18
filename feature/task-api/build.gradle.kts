@@ -10,7 +10,7 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.local.feature.today.api"
+    namespace = "com.cat.school.local.feature.task.api"
 }
 
 dependencies {

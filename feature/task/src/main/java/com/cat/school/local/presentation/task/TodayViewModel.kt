@@ -1,4 +1,4 @@
-package com.cat.school.local.presentation.today
+package com.cat.school.local.presentation.task
 
 import androidx.lifecycle.ViewModel
 import com.cat.school.local.core.nav.api.LocalNav

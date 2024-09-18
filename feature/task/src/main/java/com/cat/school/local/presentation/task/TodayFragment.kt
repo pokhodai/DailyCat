@@ -1,4 +1,4 @@
-package com.cat.school.local.presentation.today
+package com.cat.school.local.presentation.task
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.cat.school.local.core.uikit.adapter.GlobalAdapter
-import com.cat.school.local.feature.today.databinding.FragmentTodayBinding
+import com.cat.school.local.feature.task.databinding.FragmentTodayBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

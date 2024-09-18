@@ -10,24 +10,12 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.local.feature.today"
-
-    buildFeatures {
-        viewBinding = true
-    }
+    namespace = "com.cat.school.local.core.nav"
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
-    implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-
-    implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
-
-    implementation(project(path = ":core:uikit"))
-    implementation(project(path = ":core:nav-api"))
-    implementation(project(path = ":feature:today-api"))
 }

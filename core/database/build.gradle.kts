@@ -24,5 +24,5 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
 
-    implementation(project(path = ":core:database-api"))
+//    implementation(project(path = ":feature"))
 }

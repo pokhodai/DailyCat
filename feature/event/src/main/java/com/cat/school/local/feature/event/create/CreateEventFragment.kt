@@ -9,6 +9,7 @@ import com.cat.school.core.common.ext.observe
 import com.cat.school.core.common.ext.viewBinding
 import com.cat.school.local.core.uikit.adapter.GlobalAdapter
 import com.cat.school.local.feature.event.R
+import com.cat.school.local.feature.event.create.decoration.CreaterEventDecoration
 import com.cat.school.local.feature.event.databinding.FragmentCreateEventBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.filterNotNull
@@ -30,6 +31,7 @@ class CreateEventFragment : Fragment(R.layout.fragment_create_event) {
 
     private fun setAdapter() {
         binding.createEventList.adapter = adapter
+        binding.createEventList.addItemDecoration(CreaterEventDecoration())
     }
 
     private fun setObservable() = with(viewModel) {

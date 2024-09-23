@@ -29,5 +29,7 @@ dependencies {
 
     implementation(project(path = ":core:uikit"))
     implementation(project(path = ":core:common"))
-    implementation(project(":core:nav"))
+    implementation(project(path = ":core:nav"))
+
+    implementation(project(path = ":feature:event-api"))
 }

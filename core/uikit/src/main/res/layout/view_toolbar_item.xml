@@ -11,13 +11,14 @@
         android:id="@+id/toolbar_item_content_container"
         android:layout_width="match_parent"
         android:paddingVertical="12dp"
+        android:animateLayoutChanges="true"
         android:paddingHorizontal="12dp"
-        android:layout_height="wrap_content">
+        android:layout_height="55dp">
 
         <ImageView
             android:id="@+id/toolbar_item_leading"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/ic_chevron_left"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +29,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="Title"
-            android:textAlignment="gravity"
             android:paddingStart="12dp"
             android:visibility="gone"
             tools:visibility="visible"
@@ -43,7 +43,8 @@
             android:id="@+id/toolbar_item_trailing_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
+            android:gravity="center"
+            android:paddingVertical="5dp"
             android:textAppearance="@style/Bold.14.colorAction0"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

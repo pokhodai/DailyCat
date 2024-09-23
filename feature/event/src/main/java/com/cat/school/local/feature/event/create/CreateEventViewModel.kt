@@ -2,10 +2,14 @@ package com.cat.school.local.feature.event.create
 
 import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModel
+import com.cat.school.core.common.managers.ResManager
 import com.cat.school.local.core.nav.api.LocalNav
 import com.cat.school.local.core.uikit.adapter.item.GlobalItem
 import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
+import com.cat.school.local.feature.event.R
+import com.cat.school.local.feature.event.api.CreateEventModel
 import com.cat.school.local.feature.event.create.mapper.CreateEventMapper
+import com.cat.school.local.feature.event.create.states.CreateEventErrorState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,6 +19,7 @@ import javax.inject.Inject
 class CreateEventViewModel @Inject constructor(
     private val createEventMapper: CreateEventMapper,
     private val nav: LocalNav,
+    private val resManager: ResManager,
 ): ViewModel() {
 
     private val _toolbarEventFlow = MutableStateFlow<ToolbarItem.State?>(null)
@@ -23,12 +28,26 @@ class CreateEventViewModel @Inject constructor(
     private val _listEventFlow = MutableStateFlow<List<GlobalItem>>(emptyList())
     val listEventFlow = _listEventFlow.asStateFlow()
 
+    private var errorState = CreateEventErrorState()
+
+    private var createEventModel = CreateEventModel(
+        name = "",
+        place = null
+    )
+
     init {
+        updateToolbar()
+        updateItems()
+    }
+
+    private fun updateToolbar() {
+        val name = createEventModel.name
+        val isSave = name.trim().isNotEmpty()
         _toolbarEventFlow.value = createEventMapper.mapCreateEventToolbarItemState(
+            isSave = isSave,
+            onClickTrailing = ::onClickSave,
             onClickBackPressed = ::onClickBack
         )
-
-        updateItems()
     }
 
     private fun onChangeFocus(focusId: String) {
@@ -38,23 +57,34 @@ class CreateEventViewModel @Inject constructor(
     private fun updateItems(
         requestFocusId: String? = null
     ) {
+        val labelName = resManager.getString(R.string.create_event_label_name)
+        val hintName = resManager.getString(R.string.create_event_hint_name)
+        val labelPlace = resManager.getString(R.string.create_event_label_place)
+        val hintPlace = resManager.getString(R.string.create_event_hint_place)
         _listEventFlow.value = listOf(
             createEventMapper.mapTextFieldEvent(
-                label = "Name",
-                hint = "Name",
-                focusId = "Place",
+                value = createEventModel.name,
+                label = labelName,
+                hint = hintName,
+                focusId = labelPlace,
+                requestFocusId = requestFocusId,
                 onChangeFocus = ::onChangeFocus,
                 onChangeValue = ::onChangeName
             ),
             createEventMapper.mapTextFieldEvent(
-                label = "Place",
-                hint = "Place",
+                value = createEventModel.place.orEmpty(),
+                label = labelPlace,
+                hint = hintPlace,
                 imeOption = EditorInfo.IME_ACTION_DONE,
-                isRequestFocus = requestFocusId == "Place",
+                requestFocusId = requestFocusId,
                 onChangeFocus = ::onChangeFocus,
                 onChangeValue = ::onChangePlace
             )
         )
+    }
+
+    private fun onClickSave() {
+        
     }
 
     private fun onClickBack() {
@@ -62,10 +92,12 @@ class CreateEventViewModel @Inject constructor(
     }
 
     private fun onChangePlace(place: String) {
-
+        createEventModel = createEventModel.copy(place = place)
+        updateToolbar()
     }
 
     private fun onChangeName(name: String) {
-
+        createEventModel = createEventModel.copy(name = name)
+        updateToolbar()
     }
 }

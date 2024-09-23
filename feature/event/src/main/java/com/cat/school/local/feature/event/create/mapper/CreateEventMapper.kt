@@ -1,11 +1,13 @@
 package com.cat.school.local.feature.event.create.mapper
 
 import android.view.inputmethod.EditorInfo
+import androidx.annotation.StringRes
 import com.cat.school.core.common.managers.ResManager
 import com.cat.school.local.core.uikit.adapter.item.GlobalItem
 import com.cat.school.local.core.uikit.base.IconState
 import com.cat.school.local.core.uikit.ui.edit.TextFieldItem
 import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
+import com.cat.school.local.feature.event.R
 import javax.inject.Inject
 import com.cat.school.local.core.uikit.R as uikitR
 
@@ -14,24 +16,33 @@ class CreateEventMapper @Inject constructor(
 ) {
 
     fun mapCreateEventToolbarItemState(
+        isSave: Boolean = false,
+        onClickTrailing: (() -> Unit)? = null,
         onClickBackPressed: () -> Unit,
     ): ToolbarItem.State {
         return ToolbarItem.State(
             id = "create_event_toolbar_id",
+            trailingText = if (isSave) {
+                resManager.getString(R.string.create_event_save)
+            } else {
+                null
+            },
             leading = IconState(
                 value = uikitR.drawable.ic_chevron_left,
                 tint = uikitR.color.actionColor0
             ),
+            onClickTrailing = onClickTrailing,
             backgroundColorInt = resManager.getColor(uikitR.color.backgroundColor2),
             onClickLeading = onClickBackPressed
         )
     }
 
     fun mapTextFieldEvent(
+        value: String,
         label: String,
         hint: String,
         focusId: String? = null,
-        isRequestFocus: Boolean = false,
+        requestFocusId: String? = null,
         imeOption: Int = EditorInfo.IME_ACTION_NEXT,
         onChangeFocus: (focusId: String) -> Unit,
         onChangeValue: (text: String) -> Unit
@@ -41,8 +52,9 @@ class CreateEventMapper @Inject constructor(
                 id = label,
                 label = label,
                 focusId = focusId,
+                value = value,
                 hint = hint,
-                isRequestFocus = isRequestFocus,
+                isRequestFocus = label == requestFocusId,
                 imeOption = imeOption,
                 onFocusChanged = onChangeFocus,
                 doOnAfterTextChanger = onChangeValue

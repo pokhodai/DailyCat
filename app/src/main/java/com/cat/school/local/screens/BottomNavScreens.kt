@@ -11,7 +11,7 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 object BottomNavScreens {
 
     fun getTabContainerFragment(tabItemEntry: TabItemEntry) = FragmentScreen {
-        TabContainerFragment.getNewInstance(tabItemEntry)
+        TabContainerFragment.getTabContainer(tabItemEntry)
     }
 
     fun getBottomTabFragment(tabItemEntry: TabItemEntry): FragmentScreen {

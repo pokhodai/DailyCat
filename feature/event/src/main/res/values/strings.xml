@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="event_toolbar_title">New Event</string>
+
+    <string name="create_event_label_name">Name</string>
+    <string name="create_event_hint_name">Event name</string>
+    <string name="create_event_label_place">Place</string>
+    <string name="create_event_hint_place">Place (Optional)</string>
+    <string name="create_event_save">Save</string>
 </resources>

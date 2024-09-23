@@ -6,11 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.cat.school.local.R
 import com.cat.school.local.model.TabItemEntry
 import com.cat.school.local.nav.container.IContainerNavProvider
 import com.cat.school.local.nav.container.LocalNavContainerHolder
@@ -83,7 +80,7 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
     companion object {
         private const val EXTRA_TAB_ITEM_ENTRY_NAME = "tcf_extra_tab_item_entry_name"
 
-        fun getNewInstance(tabItemEntry: TabItemEntry) =
+        fun getTabContainer(tabItemEntry: TabItemEntry) =
             TabContainerFragment().apply {
                 arguments = bundleOf(EXTRA_TAB_ITEM_ENTRY_NAME to tabItemEntry.name)
             }

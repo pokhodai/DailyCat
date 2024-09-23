@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Toolbar
+import com.cat.school.local.core.uikit.base.IconState
 import com.cat.school.local.core.uikit.databinding.ViewToolbarItemBinding
 import com.cat.school.local.core.uikit.ext.bindImageOptional
 import com.cat.school.local.core.uikit.ext.bindTextOptional
@@ -44,7 +45,8 @@ class ToolbarItemView @JvmOverloads constructor(
         onClickTrailingText = state.onClickTrailing
         setBackgroundColor(state.backgroundColorInt ?: Color.TRANSPARENT)
         binding.toolbarItemTitle.bindTextOptional(state.title)
-        binding.toolbarItemLeading.bindImageOptional(state.leadingIcon)
+        binding.toolbarItemLeading.bindImageOptional(state.leading)
         binding.toolbarItemTrailingText.bindTextOptional(state.trailingText)
     }
+
 }

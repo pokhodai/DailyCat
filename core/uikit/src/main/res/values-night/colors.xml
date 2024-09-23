@@ -4,6 +4,8 @@
     <color name="textColor1">#99EBEBF5</color>
     <color name="textColor2">#010618</color>
 
+    <color name="textColorHint">@color/textColor1</color>
+
     <color name="backgroundColor0">#010618</color>
     <color name="backgroundColor0_inverse">#FFFFFF</color>
     <color name="backgroundColor1">#141927</color>

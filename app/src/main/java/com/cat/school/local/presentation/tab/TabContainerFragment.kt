@@ -25,15 +25,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class TabContainerFragment : Fragment(), IContainerNavProvider {
 
-    private val navigator: Navigator by lazy {
-        AppNavigator(requireActivity(), R.id.tab_container_id, childFragmentManager)
-    }
-
-    @Inject
-    lateinit var localNavContainerHolder: LocalNavContainerHolder
-
-    private var isPressedBackFirstTime: Boolean = false
-
     private val tabItemEntry: TabItemEntry
         get() {
             val tabItemEntryName =
@@ -41,13 +32,16 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
             return TabItemEntry.valueOf(tabItemEntryName)
         }
 
-    private val toastExitApp by lazy {
-        Toast.makeText(
-            requireContext(),
-            "Нажмите второй раз для выхода из приложения",
-            Toast.LENGTH_SHORT
+    private val navigator: Navigator by lazy {
+        AppNavigator(
+            requireActivity(),
+            tabItemEntry.containerIdRes,
+            childFragmentManager
         )
     }
+
+    @Inject
+    lateinit var localNavContainerHolder: LocalNavContainerHolder
 
     override fun getCicerone(): Cicerone<Router> {
         return localNavContainerHolder.getCicerone(tabItemEntry)
@@ -57,83 +51,33 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
         return getCicerone().router
     }
 
-    private val onBackPressedCallback: OnBackPressedCallback =
-        object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (!isVisible) {
-                    return
-                }
-
-                val fragment = childFragmentManager.findFragmentById(R.id.tab_container_id)
-                val isNotNullFragment = fragment != null
-                if (!isNotNullFragment) {
-                    return
-                }
-                val backStackEntryCount = childFragmentManager.backStackEntryCount
-                when {
-                    backStackEntryCount >= 1 -> {
-                        getRouter().exit()
-                    }
-
-                    backStackEntryCount == 0 -> {
-                        if (!isPressedBackFirstTime) {
-                            isPressedBackFirstTime = true
-                            toastExitApp.show()
-                        } else {
-                            getRouter().exit()
-                        }
-                    }
-                }
-            }
-        }
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        isPressedBackFirstTime = false
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val containerFragment = childFragmentManager.findFragmentById(R.id.tab_container_id)
-        if (containerFragment == null) {
-            val fragment = BottomNavScreens.getBottomTabFragment(tabItemEntry)
-            getCicerone().router.replaceScreen(fragment)
-        }
-        addOnBackPressedDispatcher()
+        val containerFragment = childFragmentManager.findFragmentById(tabItemEntry.containerIdRes)
         val tabContainer = FrameLayout(requireContext())
         tabContainer.layoutParams = ViewGroup.LayoutParams(
             MATCH_PARENT,
             MATCH_PARENT
         )
-        tabContainer.id = R.id.tab_container_id
+        tabContainer.id = tabItemEntry.containerIdRes
+        if (containerFragment == null) {
+            val fragment = BottomNavScreens.getBottomTabFragment(tabItemEntry)
+            getCicerone().router.replaceScreen(fragment)
+        }
         return tabContainer
-    }
-
-    private fun addOnBackPressedDispatcher() {
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            onBackPressedCallback
-        )
     }
 
     override fun onResume() {
         super.onResume()
-        isPressedBackFirstTime = false
         getCicerone().getNavigatorHolder().setNavigator(navigator)
     }
 
     override fun onPause() {
-        isPressedBackFirstTime = false
         getCicerone().getNavigatorHolder().removeNavigator()
         super.onPause()
-    }
-
-    override fun onDestroyView() {
-        onBackPressedCallback.remove()
-        super.onDestroyView()
     }
 
     companion object {

@@ -2,5 +2,10 @@
     <style name="Base.Theme.CatSchoolApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor">@color/backgroundColor1</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:scrollbars">none</item>
+        <item name="colorPrimary">@color/textColor2</item>
+        <item name="colorPrimaryVariant">@color/textColor1</item>
+        <item name="colorAccent">@color/backgroundColor2</item>
     </style>
 </resources>

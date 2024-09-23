@@ -6,10 +6,6 @@ import org.gradle.kotlin.dsl.configure
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion
 import com.cat.school.local.buildSrc.config.AppConfig
-import org.gradle.initialization.GradlePropertiesController
-import org.gradle.kotlin.dsl.support.kotlinCompilerOptions
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.libsDirectory
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class AppConfigPlugin : Plugin<Project> {

@@ -56,7 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingEnd="8dp"
-            android:textAppearance="@style/Regular.14.colortext0"
+            android:textAppearance="@style/Regular.14.colorText0"
             app:layout_constraintStart_toEndOf="@+id/task_item_start_time_arrow"
             app:layout_constraintTop_toTopOf="@+id/task_item_top"
             tools:text="08:00 AM" />
@@ -85,7 +85,7 @@
             android:gravity="end|bottom"
             android:paddingEnd="8dp"
             android:textAlignment="gravity"
-            android:textAppearance="@style/Regular.14.colortext0"
+            android:textAppearance="@style/Regular.14.colorText0"
             app:layout_constraintBottom_toBottomOf="@+id/task_item_bottom"
             app:layout_constraintEnd_toStartOf="@+id/task_item_divider"
             app:layout_constraintStart_toStartOf="@+id/task_item_left"
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="6dp"
             android:paddingEnd="8dp"
-            android:textAppearance="@style/Bold.10.colortext1"
+            android:textAppearance="@style/Bold.10.colorText1"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -133,7 +133,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="8dp"
             android:paddingTop="4dp"
-            android:textAppearance="@style/Regular.12.colortext1"
+            android:textAppearance="@style/Regular.12.colorText1"
             android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@+id/task_item_right"
             app:layout_constraintStart_toEndOf="@+id/task_item_divider"
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="4dp"
                 android:text="@string/task_missing_assignment"
-                android:textAppearance="@style/Regular.12.colortext0" />
+                android:textAppearance="@style/Regular.12.colorText0" />
 
         </LinearLayout>
 

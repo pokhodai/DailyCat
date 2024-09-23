@@ -3,28 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/event_root"
     android:background="@color/backgroundColor0">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/event_abl"
+        android:id="@+id/create_event_abl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/transparent"
         app:elevation="0dp">
 
         <com.cat.school.local.core.uikit.ui.toolbar.ToolbarItemView
-            android:id="@+id/event_toolbar"
+            android:id="@+id/create_event_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/event_nsv"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/create_event_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-    </androidx.core.widget.NestedScrollView>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

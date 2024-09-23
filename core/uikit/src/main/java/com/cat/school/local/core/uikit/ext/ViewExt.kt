@@ -1,5 +1,6 @@
 package com.cat.school.local.core.uikit.ext
 
+import android.app.Activity
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Outline
@@ -8,6 +9,7 @@ import android.graphics.drawable.RippleDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
@@ -20,7 +22,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
+import com.cat.school.local.core.uikit.base.IconState
 import com.cat.school.local.core.uikit.utils.ViewDimension
+
 
 fun View.getDrawable(@DrawableRes id: Int) =
     ResourcesCompat.getDrawable(context.resources, id, context.theme)
@@ -178,6 +182,19 @@ fun ImageView.bindImageOptional(@DrawableRes imageRes: Int?) {
         setImageResource(it)
         true
     } ?: false
+}
+
+fun ImageView.bindImageOptional(state: IconState?) {
+    isVisible = state?.let {
+        setImageResource(it.value)
+        imageTintList = it.tint?.let(::getColorStateList)
+        true
+    } ?: false
+}
+
+fun View.hideKeyboard() {
+    val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(windowToken, 0)
 }
 
 fun ImageView.setTint(@ColorInt colorInt: Int) {

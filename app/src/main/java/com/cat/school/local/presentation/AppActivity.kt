@@ -1,10 +1,12 @@
 package com.cat.school.local.presentation
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.cat.school.core.common.ext.hideKeyboard
 import com.cat.school.local.R
 import com.cat.school.local.databinding.ActivityMainBinding
 import com.cat.school.local.common.ext.addItem
@@ -34,6 +36,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         setBottomNavigationMenu()
         if (savedInstanceState == null) {
             binding.appActivityBottomNavigation.selectedItemId = TabItemEntry.TODAY.idRes
@@ -125,6 +128,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
             )
         }
         if (currentFragment != null) {
+            currentFragment.hideKeyboard()
             transaction.hide(currentFragment)
         }
         if (newFragment != null) {

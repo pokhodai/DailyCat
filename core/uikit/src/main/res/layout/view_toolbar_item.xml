@@ -33,7 +33,7 @@
             android:visibility="gone"
             tools:visibility="visible"
             android:gravity="center|start"
-            android:textAppearance="@style/Bold.20.colortext0"
+            android:textAppearance="@style/Bold.20.colorText0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/toolbar_item_trailing_text"
             app:layout_constraintStart_toEndOf="@+id/toolbar_item_leading"

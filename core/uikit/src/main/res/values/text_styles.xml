@@ -36,6 +36,11 @@
         <item name="lineHeight">12dp</item>
     </style>
 
+    <style name="Bold.12">
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">14dp</item>
+    </style>
+
     <style name="Bold.14">
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">17dp</item>
@@ -50,23 +55,23 @@
         <item name="android:textColor">@color/actionColor0</item>
     </style>
 
-    <style name="Bold.20.colortext0">
+    <style name="Bold.20.colorText0">
         <item name="android:textColor">@color/textColor0</item>
     </style>
 
-    <style name="Bold.20.colortext1">
+    <style name="Bold.20.colorText1">
         <item name="android:textColor">@color/textColor1</item>
     </style>
 
-    <style name="Regular.12.colortext1">
+    <style name="Regular.12.colorText1">
         <item name="android:textColor">@color/textColor1</item>
     </style>
 
-    <style name="Bold.10.colortext1">
+    <style name="Bold.10.colorText1">
         <item name="android:textColor">@color/textColor1</item>
     </style>
 
-    <style name="Regular.14.colortext0">
+    <style name="Regular.14.colorText0">
         <item name="android:textColor">@color/textColor0</item>
     </style>
 
@@ -74,7 +79,7 @@
         <item name="android:textColor">@color/textColor1</item>
     </style>
 
-    <style name="Regular.12.colortext0">
+    <style name="Regular.12.colorText0">
         <item name="android:textColor">@color/textColor0</item>
     </style>
 </resources>

@@ -35,8 +35,4 @@ object DatabaseModule {
     @Singleton
     @Provides
     fun provideTaskDao(scheduleDatabase: ScheduleDatabase) = scheduleDatabase.taskDao()
-
-    @Singleton
-    @Provides
-    fun provideAssignmentsDao(scheduleDatabase: ScheduleDatabase) = scheduleDatabase.assignmentsDao()
 }

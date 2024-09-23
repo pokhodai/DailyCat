@@ -21,5 +21,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.hilt.android)
+    implementation(libs.androidx.viewbinding)
     ksp(libs.hilt.android.compiler)
 }

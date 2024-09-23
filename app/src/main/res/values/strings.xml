@@ -11,5 +11,8 @@
     <item type="id" name="tab_schedule_id"/>
     <item type="id" name="tab_settings_id"/>
 
-    <item type="id" name="tab_container_id"/>
+    <item type="id" name="tab_container_today_id"/>
+    <item type="id" name="tab_container_assignments_id"/>
+    <item type="id" name="tab_container_schedule_id"/>
+    <item type="id" name="tab_container_settings_id"/>
 </resources>

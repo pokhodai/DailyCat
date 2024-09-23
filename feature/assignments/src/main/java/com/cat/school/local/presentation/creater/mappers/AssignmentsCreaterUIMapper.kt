@@ -15,7 +15,6 @@ class AssignmentsCreaterUIMapper @Inject constructor(
     ): ToolbarItem.State {
         return ToolbarItem.State(
             id = "assignments_creater_toolbar_id",
-            leadingIcon = uikitR.drawable.ic_chevron_left,
             backgroundColorInt = resManager.getColor(uikitR.color.backgroundColor2),
             title = resManager.getString(R.string.assignments_creater_toolbar),
             onClickLeading = onClickLeading

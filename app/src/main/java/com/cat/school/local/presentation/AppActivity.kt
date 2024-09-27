@@ -3,22 +3,25 @@ package com.cat.school.local.presentation
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.cat.school.core.common.ext.hideKeyboard
 import com.cat.school.local.R
-import com.cat.school.local.databinding.ActivityMainBinding
 import com.cat.school.local.common.ext.addItem
+import com.cat.school.local.common.ext.showSnackBar
+import com.cat.school.local.databinding.ActivityMainBinding
 import com.cat.school.local.model.TabItemEntry
-import com.cat.school.local.nav.activity.LocalNavActivityHolder
 import com.cat.school.local.nav.activity.IActivityNavProvider
+import com.cat.school.local.nav.activity.LocalNavActivityHolder
 import com.cat.school.local.nav.container.IContainerNavProvider
 import com.cat.school.local.screens.BottomNavScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+
 
 @AndroidEntryPoint
 class AppActivity : FragmentActivity(), IActivityNavProvider {
@@ -31,6 +34,29 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
 
     @Inject
     lateinit var localNavActivityHolder: LocalNavActivityHolder
+
+    private var isHandleOnBackOnce: Boolean = false
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            val container = getVisibleFragmentContainer()
+            val backStackEntry = container?.childFragmentManager?.backStackEntryCount ?: 0
+            when {
+                backStackEntry >= 1 -> {
+                    getRouter()?.exit()
+                }
+                !isHandleOnBackOnce -> {
+                    isHandleOnBackOnce = true
+                    if (container is IContainerNavProvider) {
+                        container.onShowSnackBar("Нажмите еще раз для выхода")
+                    }
+                }
+                isHandleOnBackOnce -> {
+                    getRouter()?.exit()
+                }
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,11 +71,14 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
 
     override fun onResume() {
         super.onResume()
+        onResetHandleBackPressedOnce()
         localNavActivityHolder.setProvider(this)
+        onBackPressedDispatcher.addCallback(onBackPressedCallback)
     }
 
     override fun onPause() {
         localNavActivityHolder.removeProvider()
+        onBackPressedCallback.remove()
         super.onPause()
     }
 
@@ -65,14 +94,25 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
         binding.appActivityBottomNavigation.setOnItemSelectedListener(::onItemSelected)
     }
 
-    private fun getVisibleContainer(): Fragment? {
+    private fun getVisibleFragmentContainer(): Fragment? {
         val fm = supportFragmentManager
         val fragments = fm.fragments
         return fragments.find { it.isVisible && it is IContainerNavProvider }
     }
 
+    override fun onResetHandleBackPressedOnce() {
+        isHandleOnBackOnce = false
+    }
+
+    override fun onShowSnackBar(message: String) {
+        showSnackBar(
+            view = window.decorView,
+            message = message
+        )
+    }
+
     override fun getCicerone(): Cicerone<Router>? {
-        val fragment = getVisibleContainer()
+        val fragment = getVisibleFragmentContainer()
         return if (fragment is IContainerNavProvider) {
             fragment.getCicerone()
         } else {
@@ -81,7 +121,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
     }
 
     override fun getRouter(): Router? {
-        val fragment = getVisibleContainer()
+        val fragment = getVisibleFragmentContainer()
         return if (fragment is IContainerNavProvider) {
             fragment.getRouter()
         } else {
@@ -93,6 +133,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
         menuItem: MenuItem
     ): Boolean {
         val tabItemEntry = TabItemEntry.entries.find { it.idRes == menuItem.itemId }
+        onResetHandleBackPressedOnce()
         return onTabSelected(tabItemEntry)
     }
 
@@ -103,39 +144,34 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
             return false
         }
 
-        val fm = supportFragmentManager
-        var currentFragment: Fragment? = null
-        val fragments = fm.fragments
-        for (f in fragments) {
-            if (f.isVisible) {
-                currentFragment = f
-                break
-            }
-        }
-        val newFragment = fm.findFragmentByTag(tabItemEntry.name)
+        val currentFragment = supportFragmentManager.fragments.find { f -> f.isVisible }
+        val newFragment = supportFragmentManager.findFragmentByTag(tabItemEntry.name)
+
         if (currentFragment != null && newFragment != null && currentFragment === newFragment) {
             return false
         }
 
-        val transaction = fm.beginTransaction()
+        val transaction = supportFragmentManager.beginTransaction()
         if (newFragment == null) {
             transaction.add(
                 R.id.app_activity_root_container,
                 BottomNavScreens
                     .getTabContainerFragment(tabItemEntry)
-                    .createFragment(fm.fragmentFactory),
+                    .createFragment(supportFragmentManager.fragmentFactory),
                 tabItemEntry.name
             )
         }
+
         if (currentFragment != null) {
             currentFragment.hideKeyboard()
             transaction.hide(currentFragment)
         }
+
         if (newFragment != null) {
             transaction.show(newFragment)
         }
-        transaction.commitNow()
 
+        transaction.commitNow()
         return true
     }
 }

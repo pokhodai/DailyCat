@@ -6,4 +6,5 @@ import com.github.terrakok.cicerone.Router
 interface IContainerNavProvider {
     fun getCicerone(): Cicerone<Router>?
     fun getRouter(): Router?
+    fun onShowSnackBar(message: String)
 }

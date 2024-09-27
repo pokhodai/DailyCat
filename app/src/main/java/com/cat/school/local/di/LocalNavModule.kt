@@ -11,10 +11,9 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ViewModelComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class LocalNavModule {
 
     @Binds
-    @ViewModelScoped
     abstract fun bindLocalNavImpl(impl: LocalNavImpl): LocalNav
 }

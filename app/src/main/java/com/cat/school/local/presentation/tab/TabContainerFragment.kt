@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import com.cat.school.local.common.ext.showSnackBar
 import com.cat.school.local.model.TabItemEntry
 import com.cat.school.local.nav.container.IContainerNavProvider
 import com.cat.school.local.nav.container.LocalNavContainerHolder
@@ -29,6 +31,8 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
             return TabItemEntry.valueOf(tabItemEntryName)
         }
 
+    private var tabContainer: View? = null
+
     private val navigator: Navigator by lazy {
         AppNavigator(
             requireActivity(),
@@ -48,6 +52,10 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
         return getCicerone().router
     }
 
+    override fun onShowSnackBar(message: String) {
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -64,6 +72,7 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
             val fragment = BottomNavScreens.getBottomTabFragment(tabItemEntry)
             getCicerone().router.replaceScreen(fragment)
         }
+        this@TabContainerFragment.tabContainer = tabContainer
         return tabContainer
     }
 

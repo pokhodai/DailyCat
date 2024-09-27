@@ -11,7 +11,6 @@ class TodayViewModel @Inject constructor(
 ) : ViewModel() {
 
 
-
     fun onClickFloating() {
         nav.goToEvent()
     }

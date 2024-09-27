@@ -24,6 +24,10 @@ class LocalNavActivityHolder @Inject constructor() {
         return getContainerNav()?.getCicerone()
     }
 
+    fun onResetHandleBackPressedOnce() {
+        provider?.onResetHandleBackPressedOnce()
+    }
+
     fun pop() {
         getRouter()?.exit()
     }

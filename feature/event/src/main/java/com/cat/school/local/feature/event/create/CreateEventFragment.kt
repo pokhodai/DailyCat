@@ -2,6 +2,9 @@ package com.cat.school.local.feature.event.create
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.cat.school.core.common.ext.autoClean
@@ -9,6 +12,7 @@ import com.cat.school.core.common.ext.observe
 import com.cat.school.core.common.ext.viewBinding
 import com.cat.school.local.core.uikit.adapter.GlobalAdapter
 import com.cat.school.local.feature.event.R
+import com.cat.school.local.feature.event.create.common.EventKeys
 import com.cat.school.local.feature.event.create.decoration.CreaterEventDecoration
 import com.cat.school.local.feature.event.databinding.FragmentCreateEventBinding
 import dagger.hilt.android.AndroidEntryPoint

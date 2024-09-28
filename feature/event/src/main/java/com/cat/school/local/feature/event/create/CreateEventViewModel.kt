@@ -1,15 +1,13 @@
 package com.cat.school.local.feature.event.create
 
 import android.view.inputmethod.EditorInfo
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.cat.school.core.common.managers.ResManager
-import com.cat.school.local.core.nav.api.LocalNav
+import com.cat.school.local.core.nav.Nav
 import com.cat.school.local.core.uikit.adapter.item.GlobalItem
 import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
 import com.cat.school.local.feature.event.R
 import com.cat.school.local.feature.event.api.CreateEventModel
-import com.cat.school.local.feature.event.create.common.EventKeys
 import com.cat.school.local.feature.event.create.mapper.CreateEventMapper
 import com.cat.school.local.feature.event.create.states.CreateEventErrorState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CreateEventViewModel @Inject constructor(
     private val createEventMapper: CreateEventMapper,
-    private val nav: LocalNav,
+    private val nav: Nav,
     private val resManager: ResManager,
 ): ViewModel() {
 

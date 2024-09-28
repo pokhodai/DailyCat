@@ -5,7 +5,9 @@ import com.github.terrakok.cicerone.androidx.FragmentScreen
 
 object EventScreens {
 
-    fun getCreateEventFragment() = FragmentScreen {
+    const val CREATE_EVENT_KEY = "CREATE_EVENT_KEY"
+
+    fun getCreateEventFragment() = FragmentScreen(key = CREATE_EVENT_KEY) {
         CreateEventFragment()
     }
 }

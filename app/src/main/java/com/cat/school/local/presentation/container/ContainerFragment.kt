@@ -1,4 +1,4 @@
-package com.cat.school.local.presentation.tab
+package com.cat.school.local.presentation.container
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,13 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.cat.school.local.common.ext.showSnackBar
 import com.cat.school.local.model.TabItemEntry
-import com.cat.school.local.nav.container.IContainerNavProvider
-import com.cat.school.local.nav.container.LocalNavContainerHolder
+import com.cat.school.local.nav.providers.ContainerNavProvider
+import com.cat.school.local.nav.holders.ContainerNavHolder
 import com.cat.school.local.screens.BottomNavScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Navigator
@@ -22,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TabContainerFragment : Fragment(), IContainerNavProvider {
+class ContainerFragment : Fragment(), ContainerNavProvider {
 
     private val tabItemEntry: TabItemEntry
         get() {
@@ -31,21 +29,22 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
             return TabItemEntry.valueOf(tabItemEntryName)
         }
 
-    private var tabContainer: View? = null
+    private val containerId: Int
+        get() = tabItemEntry.idRes
 
     private val navigator: Navigator by lazy {
         AppNavigator(
             requireActivity(),
-            tabItemEntry.containerIdRes,
+            containerId,
             childFragmentManager
         )
     }
 
     @Inject
-    lateinit var localNavContainerHolder: LocalNavContainerHolder
+    lateinit var containerNavHolder: ContainerNavHolder
 
     override fun getCicerone(): Cicerone<Router> {
-        return localNavContainerHolder.getCicerone(tabItemEntry)
+        return containerNavHolder.getCicerone(tabItemEntry)
     }
 
     override fun getRouter(): Router {
@@ -61,18 +60,17 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val containerFragment = childFragmentManager.findFragmentById(tabItemEntry.containerIdRes)
+        val containerFragment = childFragmentManager.findFragmentById(containerId)
         val tabContainer = FrameLayout(requireContext())
         tabContainer.layoutParams = ViewGroup.LayoutParams(
             MATCH_PARENT,
             MATCH_PARENT
         )
-        tabContainer.id = tabItemEntry.containerIdRes
+        tabContainer.id = containerId
         if (containerFragment == null) {
             val fragment = BottomNavScreens.getBottomTabFragment(tabItemEntry)
-            getCicerone().router.replaceScreen(fragment)
+            getRouter().replaceScreen(fragment)
         }
-        this@TabContainerFragment.tabContainer = tabContainer
         return tabContainer
     }
 
@@ -90,7 +88,7 @@ class TabContainerFragment : Fragment(), IContainerNavProvider {
         private const val EXTRA_TAB_ITEM_ENTRY_NAME = "tcf_extra_tab_item_entry_name"
 
         fun getTabContainer(tabItemEntry: TabItemEntry) =
-            TabContainerFragment().apply {
+            ContainerFragment().apply {
                 arguments = bundleOf(EXTRA_TAB_ITEM_ENTRY_NAME to tabItemEntry.name)
             }
     }

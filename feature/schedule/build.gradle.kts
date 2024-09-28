@@ -30,4 +30,5 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     implementation(project(path = ":core:uikit"))
+    implementation(project(path = ":core:nav"))
 }

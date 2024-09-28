@@ -13,18 +13,17 @@ import com.cat.school.local.common.ext.addItem
 import com.cat.school.local.common.ext.showSnackBar
 import com.cat.school.local.databinding.ActivityMainBinding
 import com.cat.school.local.model.TabItemEntry
-import com.cat.school.local.nav.activity.IActivityNavProvider
-import com.cat.school.local.nav.activity.LocalNavActivityHolder
-import com.cat.school.local.nav.container.IContainerNavProvider
+import com.cat.school.local.nav.providers.RootNavProvider
+import com.cat.school.local.nav.holders.RootNavHolder
+import com.cat.school.local.nav.providers.ContainerNavProvider
 import com.cat.school.local.screens.BottomNavScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
-class AppActivity : FragmentActivity(), IActivityNavProvider {
+class AppActivity : FragmentActivity(), RootNavProvider {
 
     private var _binding: ActivityMainBinding? = null
     private val binding: ActivityMainBinding
@@ -33,7 +32,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
     private val viewModel by viewModels<AppActivityViewModel>()
 
     @Inject
-    lateinit var localNavActivityHolder: LocalNavActivityHolder
+    lateinit var rootNavHolder: RootNavHolder
 
     private var isHandleOnBackOnce: Boolean = false
 
@@ -43,16 +42,16 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
             val backStackEntry = container?.childFragmentManager?.backStackEntryCount ?: 0
             when {
                 backStackEntry >= 1 -> {
-                    getRouter()?.exit()
+                    rootNavHolder.pop()
                 }
                 !isHandleOnBackOnce -> {
                     isHandleOnBackOnce = true
-                    if (container is IContainerNavProvider) {
+                    if (container is ContainerNavProvider) {
                         container.onShowSnackBar("Нажмите еще раз для выхода")
                     }
                 }
                 isHandleOnBackOnce -> {
-                    getRouter()?.exit()
+                    rootNavHolder.pop()
                 }
             }
         }
@@ -72,12 +71,12 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
     override fun onResume() {
         super.onResume()
         onResetHandleBackPressedOnce()
-        localNavActivityHolder.setProvider(this)
+        rootNavHolder.setProvider(this)
         onBackPressedDispatcher.addCallback(onBackPressedCallback)
     }
 
     override fun onPause() {
-        localNavActivityHolder.removeProvider()
+        rootNavHolder.removeProvider()
         onBackPressedCallback.remove()
         super.onPause()
     }
@@ -97,7 +96,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
     private fun getVisibleFragmentContainer(): Fragment? {
         val fm = supportFragmentManager
         val fragments = fm.fragments
-        return fragments.find { it.isVisible && it is IContainerNavProvider }
+        return fragments.find { it.isVisible && it is ContainerNavProvider }
     }
 
     override fun onResetHandleBackPressedOnce() {
@@ -113,7 +112,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
 
     override fun getCicerone(): Cicerone<Router>? {
         val fragment = getVisibleFragmentContainer()
-        return if (fragment is IContainerNavProvider) {
+        return if (fragment is ContainerNavProvider) {
             fragment.getCicerone()
         } else {
             null
@@ -122,7 +121,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
 
     override fun getRouter(): Router? {
         val fragment = getVisibleFragmentContainer()
-        return if (fragment is IContainerNavProvider) {
+        return if (fragment is ContainerNavProvider) {
             fragment.getRouter()
         } else {
             null
@@ -144,7 +143,7 @@ class AppActivity : FragmentActivity(), IActivityNavProvider {
             return false
         }
 
-        val currentFragment = supportFragmentManager.fragments.find { f -> f.isVisible }
+        val currentFragment = getVisibleFragmentContainer()
         val newFragment = supportFragmentManager.findFragmentByTag(tabItemEntry.name)
 
         if (currentFragment != null && newFragment != null && currentFragment === newFragment) {

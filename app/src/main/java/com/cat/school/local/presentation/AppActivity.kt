@@ -5,17 +5,21 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import com.cat.school.core.common.ext.hideKeyboard
+import com.cat.school.core.common.ext.observe
 import com.cat.school.local.R
 import com.cat.school.local.common.ext.addItem
 import com.cat.school.local.common.ext.showSnackBar
+import com.cat.school.local.core.model.ScreenKeyEntry
 import com.cat.school.local.databinding.ActivityMainBinding
 import com.cat.school.local.model.TabItemEntry
-import com.cat.school.local.nav.providers.RootNavProvider
 import com.cat.school.local.nav.holders.RootNavHolder
 import com.cat.school.local.nav.providers.ContainerNavProvider
+import com.cat.school.local.nav.providers.RootNavProvider
 import com.cat.school.local.screens.BottomNavScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
@@ -30,6 +34,8 @@ class AppActivity : FragmentActivity(), RootNavProvider {
         get() = _binding!!
 
     private val viewModel by viewModels<AppActivityViewModel>()
+
+    private var onBackStackChangedListener: FragmentManager.OnBackStackChangedListener? = null
 
     @Inject
     lateinit var rootNavHolder: RootNavHolder
@@ -65,6 +71,13 @@ class AppActivity : FragmentActivity(), RootNavProvider {
         setBottomNavigationMenu()
         if (savedInstanceState == null) {
             binding.appActivityBottomNavigation.selectedItemId = TabItemEntry.TODAY.idRes
+        }
+        setObservable()
+    }
+
+    private fun setObservable() = with(viewModel) {
+        changeVisibilityBottomNavFlow.observe(this@AppActivity) { isVisible ->
+            binding.appActivityBottomNavigation.isVisible = isVisible
         }
     }
 
@@ -110,6 +123,22 @@ class AppActivity : FragmentActivity(), RootNavProvider {
         )
     }
 
+    override fun onChangeScreen() {
+        onBackStackChangedListener = null
+        val container = getVisibleFragmentContainer()
+        val onBackStackChangedListener = FragmentManager.OnBackStackChangedListener {
+            if (container is ContainerNavProvider) {
+                viewModel.onChangeVisibilityBottomNavigation(container.getScreenName())
+            }
+            onBackStackChangedListener?.let { listener ->
+                container?.childFragmentManager?.removeOnBackStackChangedListener(listener)
+            }
+            onBackStackChangedListener = null
+        }
+        this.onBackStackChangedListener = onBackStackChangedListener
+        container?.childFragmentManager?.addOnBackStackChangedListener(onBackStackChangedListener)
+    }
+
     override fun getCicerone(): Cicerone<Router>? {
         val fragment = getVisibleFragmentContainer()
         return if (fragment is ContainerNavProvider) {
@@ -123,6 +152,15 @@ class AppActivity : FragmentActivity(), RootNavProvider {
         val fragment = getVisibleFragmentContainer()
         return if (fragment is ContainerNavProvider) {
             fragment.getRouter()
+        } else {
+            null
+        }
+    }
+
+    override fun getScreenName(): ScreenKeyEntry? {
+        val fragment = getVisibleFragmentContainer()
+        return if (fragment is ContainerNavProvider) {
+            fragment.getScreenName()
         } else {
             null
         }

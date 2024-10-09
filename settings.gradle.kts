@@ -35,8 +35,8 @@ include(
 )
 
 include(
-    ":feature:task",
-    ":feature:task-api"
+    ":feature:today",
+    ":feature:today-api"
 )
 
 include(":feature:assignments")
@@ -44,3 +44,6 @@ include(":feature:schedule")
 include(":feature:settings")
 include(":feature:event")
 include(":feature:event-api")
+include(":feature:assignments-api")
+include(":feature:schedule-api")
+include(":feature:settings-api")

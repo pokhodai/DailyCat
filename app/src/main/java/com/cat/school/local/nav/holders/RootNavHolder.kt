@@ -1,5 +1,6 @@
 package com.cat.school.local.nav.holders
 
+import android.util.Log
 import com.cat.school.local.nav.providers.RootNavProvider
 import com.cat.school.local.nav.providers.ContainerNavProvider
 import com.github.terrakok.cicerone.Cicerone
@@ -31,6 +32,7 @@ class RootNavHolder @Inject constructor() {
     }
 
     fun pop() {
+        provider?.onChangeScreen()
         getRouter()?.exit()
     }
 
@@ -38,6 +40,7 @@ class RootNavHolder @Inject constructor() {
         screen: FragmentScreen
     ) {
         onResetHandleBackPressedOnce()
+        provider?.onChangeScreen()
         getRouter()?.navigateTo(screen)
     }
 

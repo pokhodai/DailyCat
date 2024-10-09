@@ -1,5 +1,6 @@
 package com.cat.school.local.nav
 
+import com.cat.school.local.core.model.ScreenKeyEntry
 import com.cat.school.local.core.nav.EventNav
 import com.cat.school.local.nav.holders.RootNavHolder
 import com.cat.school.local.screens.EventScreens
@@ -10,6 +11,6 @@ class EventNavImpl @Inject constructor(
 ) : EventNav {
 
     override fun gotoCreateEvent() {
-        rootNavHolder.navigate(EventScreens.getCreateEventFragment())
+        rootNavHolder.navigate(EventScreens.getCreateEventFragment(key = ScreenKeyEntry.CREATE_EVENT))
     }
 }

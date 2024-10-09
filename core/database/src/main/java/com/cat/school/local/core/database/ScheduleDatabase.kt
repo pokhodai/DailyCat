@@ -2,8 +2,8 @@ package com.cat.school.local.core.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.cat.school.local.feature.task.api.TaskDao
-import com.cat.school.local.feature.task.entity.TaskEntity
+import com.cat.school.local.feature.today.api.TaskDao
+import com.cat.school.local.feature.today.entity.TaskEntity
 
 @Database(
     entities = [

@@ -10,18 +10,14 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.local.core.database"
+    namespace = "com.cat.school.local.feature.today.api"
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.runtime)
-    ksp(libs.androidx.room.compiler)
-    implementation(project(":feature:today-api"))
 }

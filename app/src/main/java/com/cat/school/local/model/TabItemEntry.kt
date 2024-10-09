@@ -4,16 +4,17 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import com.cat.school.local.R
+import com.cat.school.local.core.model.ScreenKeyEntry
 
 enum class TabItemEntry(
     @IdRes val idRes: Int,
     @StringRes val nameRes: Int,
-    @DrawableRes val iconRes: Int
+    @DrawableRes val iconRes: Int,
 ) {
     TODAY(
         idRes = R.id.tab_today_id,
         nameRes = R.string.tab_first_menu_today,
-        iconRes = R.drawable.ic_today
+        iconRes = R.drawable.ic_today,
     ),
     SCHEDULE(
         idRes = R.id.tab_schedule_id,

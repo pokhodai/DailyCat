@@ -29,6 +29,7 @@ class ToolbarItemView @JvmOverloads constructor(
             WRAP_CONTENT
         )
 
+        setContentInsetsAbsolute(0, 0)
         setContentInsetsRelative(0, 0)
 
         binding.toolbarItemLeading.setOnClickListener {

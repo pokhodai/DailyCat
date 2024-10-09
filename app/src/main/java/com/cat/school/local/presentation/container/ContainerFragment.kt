@@ -1,6 +1,7 @@
 package com.cat.school.local.presentation.container
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,13 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.withStateAtLeast
+import com.cat.school.local.core.model.ScreenKeyEntry
+import com.cat.school.local.core.provider.FragmentProvider
 import com.cat.school.local.model.TabItemEntry
 import com.cat.school.local.nav.providers.ContainerNavProvider
 import com.cat.school.local.nav.holders.ContainerNavHolder
@@ -17,6 +25,7 @@ import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -53,6 +62,15 @@ class ContainerFragment : Fragment(), ContainerNavProvider {
 
     override fun onShowSnackBar(message: String) {
 
+    }
+
+    override fun getScreenName(): ScreenKeyEntry? {
+        val last = childFragmentManager.fragments.lastOrNull()
+        return if (last is FragmentProvider) {
+            last.getScreenKey()
+        } else {
+            null
+        }
     }
 
     override fun onCreateView(

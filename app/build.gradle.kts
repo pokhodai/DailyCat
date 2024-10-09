@@ -39,10 +39,10 @@ dependencies {
     implementation(project(path = ":core:common"))
     implementation(project(path = ":core:database"))
 
-    implementation(project(path = ":feature:task"))
     implementation(project(path = ":feature:assignments"))
     implementation(project(path = ":feature:schedule"))
     implementation(project(path = ":feature:settings"))
+    implementation(project(path = ":feature:today"))
 
     implementation(project(path = ":feature:event"))
     implementation(project(path = ":feature:event-api"))

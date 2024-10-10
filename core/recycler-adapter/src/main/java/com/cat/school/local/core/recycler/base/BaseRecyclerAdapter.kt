@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cat.school.local.core.recycler.RecyclerState
-import com.cat.school.local.core.recycler.holder.HolderItemView
+import com.cat.school.local.core.recycler.holder.HolderItemState
 import com.cat.school.local.core.recycler.holder.RecyclerViewHolder
 import java.util.concurrent.ConcurrentHashMap
 
 internal class BaseRecyclerAdapter {
 
-    private val holderViewTypeMap: ConcurrentHashMap<Int, HolderItemView> = ConcurrentHashMap()
+    private val holderViewTypeMap: ConcurrentHashMap<Int, HolderItemState> = ConcurrentHashMap()
 
     fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return getItemView(
@@ -35,7 +35,7 @@ internal class BaseRecyclerAdapter {
     }
 
     fun getItemViewType(
-        item: HolderItemView,
+        item: HolderItemState,
     ): Int {
         holderViewTypeMap.getOrPut(item.viewType) { item }
         return item.viewType

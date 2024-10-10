@@ -28,23 +28,12 @@ include(
     ":core:nav-router",
     ":core:uikit",
     ":core:common",
-    ":core:recycler-adapter"
-)
-
-include(
+    ":core:recycler-adapter",
     ":core:database",
 )
 
-include(
-    ":feature:today",
-    ":feature:today-api"
-)
-
+include(":feature:today")
 include(":feature:assignments")
 include(":feature:schedule")
 include(":feature:settings")
 include(":feature:event")
-include(":feature:event-api")
-include(":feature:assignments-api")
-include(":feature:schedule-api")
-include(":feature:settings-api")

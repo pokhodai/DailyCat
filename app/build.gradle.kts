@@ -19,7 +19,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
 
@@ -29,12 +28,12 @@ dependencies {
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.ui)
 
+    implementation(libs.cicerone)
+
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    implementation(libs.cicerone)
-    implementation(project(":core:nav-router"))
-
+    implementation(project(path = ":core:nav-router"))
     implementation(project(path = ":core:uikit"))
     implementation(project(path = ":core:common"))
     implementation(project(path = ":core:database"))
@@ -43,7 +42,5 @@ dependencies {
     implementation(project(path = ":feature:schedule"))
     implementation(project(path = ":feature:settings"))
     implementation(project(path = ":feature:today"))
-
     implementation(project(path = ":feature:event"))
-    implementation(project(path = ":feature:event-api"))
 }

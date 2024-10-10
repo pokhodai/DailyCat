@@ -2,6 +2,7 @@ package com.cat.school.local.feature.event.create.mapper
 
 import android.view.inputmethod.EditorInfo
 import com.cat.school.core.common.managers.ResManager
+import com.cat.school.local.core.recycler.RecyclerState
 import com.cat.school.local.core.uikit.base.IconState
 import com.cat.school.local.core.uikit.ui.field.TextFieldItem
 import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
@@ -44,7 +45,7 @@ class CreateEventMapper @Inject constructor(
         imeOption: Int = EditorInfo.IME_ACTION_NEXT,
         onChangeFocus: (focusId: String) -> Unit,
         onChangeValue: (text: String) -> Unit
-    ): com.cat.school.local.core.recycler.RecyclerState {
+    ): RecyclerState {
         return TextFieldItem.State(
             id = label,
             label = label,

@@ -25,6 +25,7 @@ import com.cat.school.local.core.uikit.ext.getColor
 import com.cat.school.local.core.uikit.ext.getColorStateList
 import com.cat.school.local.core.uikit.ext.getDrawable
 import com.cat.school.local.core.uikit.ext.hideKeyboard
+import com.cat.school.local.core.recycler.RecyclerItemView
 import com.google.android.material.textfield.TextInputLayout.END_ICON_CUSTOM
 import com.google.android.material.textfield.TextInputLayout.END_ICON_NONE
 
@@ -32,7 +33,7 @@ class TextFieldItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr), TextFieldItem.View, TextWatcher,
+) : FrameLayout(context, attrs, defStyleAttr), RecyclerItemView<TextFieldItem.State>, TextWatcher,
     TextView.OnEditorActionListener {
 
     private val binding = ViewTextFieldBinding.inflate(LayoutInflater.from(context), this)

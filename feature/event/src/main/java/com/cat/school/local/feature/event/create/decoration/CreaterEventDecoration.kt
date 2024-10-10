@@ -4,6 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.cat.school.local.core.uikit.ui.edit.TextFieldItem
+import com.cat.school.local.core.uikit.ui.edit.TextFieldItemView
 import com.cat.school.local.core.uikit.utils.ViewDimension
 
 class CreaterEventDecoration : RecyclerView.ItemDecoration() {
@@ -19,7 +20,7 @@ class CreaterEventDecoration : RecyclerView.ItemDecoration() {
         state: RecyclerView.State
     ) {
         when (view) {
-            is TextFieldItem.View -> {
+            is TextFieldItemView -> {
                 outRect.left = leftPadding.value
                 outRect.right = rightPadding.value
                 outRect.top = topPadding.value

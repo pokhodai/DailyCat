@@ -22,6 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
+import com.cat.school.local.core.uikit.R
 import com.cat.school.local.core.uikit.base.IconState
 import com.cat.school.local.core.uikit.utils.ViewDimension
 
@@ -109,42 +110,18 @@ fun View.makeRounded(radius: Int) {
 
 fun View.makeRippleDrawable(
     @ColorInt rippleColor: Int,
-    @ColorInt backgroundColor: Int,
-    @ColorInt disabledColor: Int = backgroundColor,
     shapeDrawable: Int = GradientDrawable.RECTANGLE,
-    cornerRadius: Float,
+    cornerRadius: Float = 0f,
 ) {
-    val content: GradientDrawable?
-    val mask: GradientDrawable?
-
-    if (backgroundColor == Color.TRANSPARENT) {
-        content = null
-        mask = GradientDrawable().apply {
-            shape = shapeDrawable
-            setCornerRadius(cornerRadius)
-            setColor(Color.TRANSPARENT)
-        }
-    } else {
-        content = GradientDrawable().apply {
-            shape = shapeDrawable
-            setCornerRadius(cornerRadius)
-            color = ColorStateList(
-                arrayOf(
-                    intArrayOf(android.R.attr.state_enabled),
-                    intArrayOf(-android.R.attr.state_enabled)
-                ),
-                intArrayOf(
-                    backgroundColor,
-                    disabledColor
-                )
-            )
-        }
-        mask = null
+    val mask = GradientDrawable().apply {
+        shape = shapeDrawable
+        setCornerRadius(cornerRadius)
+        setColor(getColor(R.color.backgroundColor0))
     }
 
     foreground = RippleDrawable(
         ColorStateList.valueOf(rippleColor),
-        content,
+        null,
         mask
     )
 }

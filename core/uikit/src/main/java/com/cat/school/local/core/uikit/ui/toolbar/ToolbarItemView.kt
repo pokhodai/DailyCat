@@ -2,15 +2,21 @@ package com.cat.school.local.core.uikit.ui.toolbar
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Toolbar
-import com.cat.school.local.core.uikit.base.IconState
+import androidx.core.view.isVisible
+import com.cat.school.local.core.uikit.R
 import com.cat.school.local.core.uikit.databinding.ViewToolbarItemBinding
 import com.cat.school.local.core.uikit.ext.bindImageOptional
 import com.cat.school.local.core.uikit.ext.bindTextOptional
+import com.cat.school.local.core.uikit.ext.dp
+import com.cat.school.local.core.uikit.ext.getColor
+import com.cat.school.local.core.uikit.ext.makeRippleDrawable
 
 class ToolbarItemView @JvmOverloads constructor(
     context: Context,
@@ -20,8 +26,7 @@ class ToolbarItemView @JvmOverloads constructor(
 
     private val binding = ViewToolbarItemBinding.inflate(LayoutInflater.from(context), this)
 
-    private var onClickLeading: (() -> Unit)? = null
-    private var onClickTrailingText: (() -> Unit)? = onClickLeading
+    private var state: ToolbarItem.State? = null
 
     init {
         layoutParams = LayoutParams(
@@ -32,22 +37,40 @@ class ToolbarItemView @JvmOverloads constructor(
         setContentInsetsAbsolute(0, 0)
         setContentInsetsRelative(0, 0)
 
-        binding.toolbarItemLeading.setOnClickListener {
-            onClickLeading?.invoke()
-        }
+        binding.toolbarItemLeadingContainer.setOnClickListener(::onClickLeading)
+        binding.toolbarItemTrailingContainer.setOnClickListener(::onCLickTrailingText)
 
-        binding.toolbarItemTrailingText.setOnClickListener {
-            onClickTrailingText?.invoke()
-        }
+        binding.toolbarItemLeadingContainer.makeRippleDrawable(
+            rippleColor = getColor(R.color.actionColor1),
+            shapeDrawable = GradientDrawable.OVAL,
+        )
+
+        binding.toolbarItemTrailingContainer.makeRippleDrawable(
+            rippleColor = getColor(R.color.actionColor1),
+            shapeDrawable = GradientDrawable.RECTANGLE,
+            cornerRadius = TRAILING_CORNER
+        )
+    }
+
+    private fun onClickLeading(view: View) {
+        state?.onClickLeading?.invoke()
+    }
+
+    private fun onCLickTrailingText(view: View) {
+        state?.onClickTrailing?.invoke()
     }
 
     override fun bindState(state: ToolbarItem.State) {
-        onClickLeading = state.onClickLeading
-        onClickTrailingText = state.onClickTrailing
+        this.state = state
         setBackgroundColor(state.backgroundColorInt ?: Color.TRANSPARENT)
         binding.toolbarItemTitle.bindTextOptional(state.title)
         binding.toolbarItemLeading.bindImageOptional(state.leading)
         binding.toolbarItemTrailingText.bindTextOptional(state.trailingText)
+        binding.toolbarItemLeadingContainer.isVisible = state.leading != null
+        binding.toolbarItemTrailingContainer.isVisible = state.trailingText != null
     }
 
+    private companion object {
+        val TRAILING_CORNER = 12.dp.toFloat()
+    }
 }

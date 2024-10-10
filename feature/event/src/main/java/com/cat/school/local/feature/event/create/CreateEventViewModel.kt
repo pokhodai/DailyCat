@@ -4,7 +4,7 @@ import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModel
 import com.cat.school.core.common.managers.ResManager
 import com.cat.school.local.core.nav.Nav
-import com.cat.school.local.core.uikit.adapter.item.GlobalItem
+import com.cat.school.local.core.recycler.RecyclerState
 import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
 import com.cat.school.local.feature.event.R
 import com.cat.school.local.feature.event.api.CreateEventModel
@@ -25,7 +25,7 @@ class CreateEventViewModel @Inject constructor(
     private val _toolbarEventFlow = MutableStateFlow<ToolbarItem.State?>(null)
     val toolbarEventFlow = _toolbarEventFlow.asStateFlow()
 
-    private val _listEventFlow = MutableStateFlow<List<GlobalItem>>(emptyList())
+    private val _listEventFlow = MutableStateFlow<List<com.cat.school.local.core.recycler.RecyclerState>>(emptyList())
     val listEventFlow = _listEventFlow.asStateFlow()
 
     private var errorState = CreateEventErrorState()
@@ -79,7 +79,7 @@ class CreateEventViewModel @Inject constructor(
                 requestFocusId = requestFocusId,
                 onChangeFocus = ::onChangeFocus,
                 onChangeValue = ::onChangePlace
-            )
+            ),
         )
     }
 

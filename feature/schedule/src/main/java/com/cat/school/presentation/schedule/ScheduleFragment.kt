@@ -27,16 +27,6 @@ class ScheduleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.field.bindState(
-            TextFieldItem.State(
-                id = "",
-                condition = TextFieldItem.Condition.Enabled,
-                hint = "Hint",
-                leadingIcon = TextFieldItem.Icon(
-                    value = com.cat.school.local.core.uikit.R.drawable.ic_trash,
-                    tint = com.cat.school.local.core.uikit.R.color.errorColor0
-                ),
-            )
-        )
+        
     }
 }

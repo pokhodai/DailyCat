@@ -11,12 +11,13 @@ import com.cat.school.local.core.uikit.R
 import com.cat.school.local.core.uikit.ext.dp
 import com.cat.school.local.core.uikit.ext.getFont
 import com.cat.school.local.core.uikit.ext.getColor
+import com.cat.school.local.core.recycler.RecyclerItemView
 
 class BadgeItemView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : View(context, attrs, defStyleAttr), BadgeItem.View {
+) : View(context, attrs, defStyleAttr), RecyclerItemView<BadgeItem.State> {
 
     private val textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER

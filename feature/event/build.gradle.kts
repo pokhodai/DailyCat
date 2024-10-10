@@ -30,6 +30,7 @@ dependencies {
     implementation(project(path = ":core:uikit"))
     implementation(project(path = ":core:common"))
     implementation(project(path = ":core:nav"))
+    implementation(project(path = ":core:recycler-adapter"))
 
     implementation(project(path = ":feature:event-api"))
 }

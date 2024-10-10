@@ -28,6 +28,7 @@ include(
     ":core:nav",
     ":core:uikit",
     ":core:common",
+    ":core:recycler-adapter"
 )
 
 include(

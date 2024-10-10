@@ -1,10 +1,9 @@
 package com.cat.school.local.feature.event.create.mapper
 
 import android.view.inputmethod.EditorInfo
-import androidx.annotation.StringRes
 import com.cat.school.core.common.managers.ResManager
-import com.cat.school.local.core.uikit.adapter.item.GlobalItem
 import com.cat.school.local.core.uikit.base.IconState
+import com.cat.school.local.core.recycler.RecyclerState
 import com.cat.school.local.core.uikit.ui.edit.TextFieldItem
 import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
 import com.cat.school.local.feature.event.R
@@ -46,19 +45,17 @@ class CreateEventMapper @Inject constructor(
         imeOption: Int = EditorInfo.IME_ACTION_NEXT,
         onChangeFocus: (focusId: String) -> Unit,
         onChangeValue: (text: String) -> Unit
-    ): GlobalItem {
-        return GlobalItem.InputWrap(
-            TextFieldItem.State(
-                id = label,
-                label = label,
-                focusId = focusId,
-                value = value,
-                hint = hint,
-                isRequestFocus = label == requestFocusId,
-                imeOption = imeOption,
-                onFocusChanged = onChangeFocus,
-                doOnAfterTextChanger = onChangeValue
-            )
+    ): com.cat.school.local.core.recycler.RecyclerState {
+        return TextFieldItem.State(
+            id = label,
+            label = label,
+            focusId = focusId,
+            value = value,
+            hint = hint,
+            isRequestFocus = label == requestFocusId,
+            imeOption = imeOption,
+            onFocusChanged = onChangeFocus,
+            doOnAfterTextChanger = onChangeValue
         )
     }
 }

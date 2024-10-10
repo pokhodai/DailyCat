@@ -1,17 +1,15 @@
 package com.cat.school.local.core.uikit.ui.edit
 
+import android.content.Context
 import android.text.InputType
 import android.view.inputmethod.EditorInfo
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import com.cat.school.local.core.uikit.R
+import com.cat.school.local.core.recycler.RecyclerState
 import com.cat.school.local.core.uikit.utils.ViewDimension
 
 class TextFieldItem {
-
-    interface View {
-        fun bindState(state: State)
-    }
 
     data class State(
         val id: String,
@@ -37,7 +35,11 @@ class TextFieldItem {
         val doOnAfterTextChanger: ((text: String) -> Unit)? = null,
         val onClickEditorAction: (() -> Unit)? = null,
         val onFocusChanged: ((focusId: String) -> Unit)? = null,
-    )
+    ) : RecyclerState {
+        override val provideId: String = id
+        override val viewType: Int = TextFieldItem::class.java.hashCode()
+        override fun getView(context: Context) = TextFieldItemView(context)
+    }
 
     data class Icon(
         @DrawableRes val value: Int,

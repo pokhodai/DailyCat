@@ -1,16 +1,15 @@
 package com.cat.school.local.core.uikit.ui.button
 
+import android.content.Context
+import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import com.cat.school.local.core.recycler.RecyclerState
 import com.cat.school.local.core.uikit.R
 import com.cat.school.local.core.uikit.utils.ViewDimension
 
 class ButtonItem {
-
-    interface View {
-        fun bindState(state: State)
-    }
 
     data class State(
         val id: String,
@@ -22,7 +21,11 @@ class ButtonItem {
         @DrawableRes val leadingIcon: Int? = null,
         @DrawableRes val trailingIcon: Int? = null,
         val onClick: (() -> Unit)? = null
-    )
+    ): RecyclerState {
+        override val provideId: String = id
+        override val viewType: Int = ButtonItem::class.java.hashCode()
+        override fun getView(context: Context) = ButtonItemView(context)
+    }
 
     sealed class Type(
         @ColorRes open val textColorRes: Int,

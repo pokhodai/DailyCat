@@ -10,7 +10,7 @@ import com.cat.school.core.common.Keys
 import com.cat.school.core.common.ext.autoClean
 import com.cat.school.core.common.ext.viewBinding
 import com.cat.school.local.core.provider.FragmentProvider
-import com.cat.school.local.core.uikit.adapter.GlobalAdapter
+import com.cat.school.local.core.recycler.adapter.AsyncRecyclerAdapter
 import com.cat.school.local.feature.today.R
 import com.cat.school.local.feature.today.databinding.FragmentTodayBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +21,7 @@ class TodayFragment : Fragment(R.layout.fragment_today) {
     private val binding by viewBinding { FragmentTodayBinding.bind(it) }
 
     private val viewModel by viewModels<TodayViewModel>()
-    private val todayDatesAdapter by autoClean { GlobalAdapter() }
+    private val todayDatesAdapter by autoClean { AsyncRecyclerAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

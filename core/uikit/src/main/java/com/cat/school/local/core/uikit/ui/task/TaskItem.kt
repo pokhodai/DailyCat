@@ -2,7 +2,7 @@ package com.cat.school.local.core.uikit.ui.task
 
 import androidx.annotation.ColorInt
 import com.cat.school.local.core.uikit.ui.checkbox.CheckboxCompositeItem
-import com.cat.school.local.core.uikit.utils.ViewDimension
+import com.cat.school.local.core.uikit.base.ViewDimension
 
 class TaskItem {
 

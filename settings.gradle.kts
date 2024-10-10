@@ -25,7 +25,7 @@ rootProject.name = "CatSchoolApp"
 include(":app")
 
 include(
-    ":core:nav",
+    ":core:nav-router",
     ":core:uikit",
     ":core:common",
     ":core:recycler-adapter"

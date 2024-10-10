@@ -1,4 +1,4 @@
-package com.cat.school.local.core.uikit.utils
+package com.cat.school.local.core.uikit.base
 
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout

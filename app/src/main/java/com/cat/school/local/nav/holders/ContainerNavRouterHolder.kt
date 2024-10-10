@@ -9,7 +9,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ContainerNavHolder @Inject constructor() {
+class ContainerNavRouterHolder @Inject constructor() {
     private val containers = ConcurrentHashMap<TabItemEntry, Cicerone<Router>>()
 
     fun getCicerone(tabItemEntry: TabItemEntry): Cicerone<Router> {

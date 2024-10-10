@@ -1,17 +1,16 @@
 package com.cat.school.local.nav.holders
 
-import android.util.Log
-import com.cat.school.local.nav.providers.RootNavProvider
-import com.cat.school.local.nav.providers.ContainerNavProvider
+import com.cat.school.local.nav.providers.RootNavRouterProvider
+import com.cat.school.local.nav.providers.ContainerNavRouterProvider
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import javax.inject.Inject
 
-class RootNavHolder @Inject constructor() {
-    private var provider: RootNavProvider? = null
+class RootNavRouterHolder @Inject constructor() {
+    private var provider: RootNavRouterProvider? = null
 
-    fun setProvider(provider: RootNavProvider) {
+    fun setProvider(provider: RootNavRouterProvider) {
         this.provider = provider
     }
 
@@ -44,9 +43,9 @@ class RootNavHolder @Inject constructor() {
         getRouter()?.navigateTo(screen)
     }
 
-    private fun getContainerNav(): ContainerNavProvider? {
+    private fun getContainerNav(): ContainerNavRouterProvider? {
         val provider = this.provider
-        return if (provider is ContainerNavProvider) {
+        return if (provider is ContainerNavRouterProvider) {
             provider
         } else {
             null

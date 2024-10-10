@@ -44,7 +44,5 @@ internal class BaseRecyclerAdapter {
     private fun getItemView(
         viewType: Int,
         context: Context,
-    ): View? {
-        return holderViewTypeMap[viewType]?.getView(context)
-    }
+    ): View? = holderViewTypeMap[viewType]?.getView(context)
 }

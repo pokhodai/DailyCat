@@ -2,7 +2,6 @@ package com.cat.school.local.core.uikit.ext
 
 import android.app.Activity
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.graphics.Outline
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.RippleDrawable
@@ -24,7 +23,7 @@ import androidx.core.view.isVisible
 import androidx.core.widget.TextViewCompat
 import com.cat.school.local.core.uikit.R
 import com.cat.school.local.core.uikit.base.IconState
-import com.cat.school.local.core.uikit.utils.ViewDimension
+import com.cat.school.local.core.uikit.base.ViewDimension
 
 
 fun View.getDrawable(@DrawableRes id: Int) =

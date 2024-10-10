@@ -3,7 +3,7 @@ package com.cat.school.local.feature.event.create
 import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModel
 import com.cat.school.core.common.managers.ResManager
-import com.cat.school.local.core.nav.Nav
+import com.cat.school.local.core.nav.router.NavRouter
 import com.cat.school.local.core.recycler.RecyclerState
 import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
 import com.cat.school.local.feature.event.R
@@ -18,14 +18,14 @@ import javax.inject.Inject
 @HiltViewModel
 class CreateEventViewModel @Inject constructor(
     private val createEventMapper: CreateEventMapper,
-    private val nav: Nav,
+    private val navRouter: NavRouter,
     private val resManager: ResManager,
 ): ViewModel() {
 
     private val _toolbarEventFlow = MutableStateFlow<ToolbarItem.State?>(null)
     val toolbarEventFlow = _toolbarEventFlow.asStateFlow()
 
-    private val _listEventFlow = MutableStateFlow<List<com.cat.school.local.core.recycler.RecyclerState>>(emptyList())
+    private val _listEventFlow = MutableStateFlow<List<RecyclerState>>(emptyList())
     val listEventFlow = _listEventFlow.asStateFlow()
 
     private var errorState = CreateEventErrorState()
@@ -88,7 +88,7 @@ class CreateEventViewModel @Inject constructor(
     }
 
     private fun onClickBack() {
-        nav.pop()
+        navRouter.pop()
     }
 
     private fun onChangePlace(place: String) {

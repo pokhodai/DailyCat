@@ -1,4 +1,4 @@
-package com.cat.school.local.core.uikit.ui.edit
+package com.cat.school.local.core.uikit.ui.field
 
 import android.content.Context
 import android.text.InputType
@@ -7,7 +7,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import com.cat.school.local.core.uikit.R
 import com.cat.school.local.core.recycler.RecyclerState
-import com.cat.school.local.core.uikit.utils.ViewDimension
+import com.cat.school.local.core.uikit.base.ViewDimension
 
 class TextFieldItem {
 

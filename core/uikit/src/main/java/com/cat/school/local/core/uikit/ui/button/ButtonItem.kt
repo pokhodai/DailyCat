@@ -1,13 +1,12 @@
 package com.cat.school.local.core.uikit.ui.button
 
 import android.content.Context
-import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import com.cat.school.local.core.recycler.RecyclerState
 import com.cat.school.local.core.uikit.R
-import com.cat.school.local.core.uikit.utils.ViewDimension
+import com.cat.school.local.core.uikit.base.ViewDimension
 
 class ButtonItem {
 

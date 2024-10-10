@@ -10,7 +10,7 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.local.core.nav"
+    namespace = "com.cat.school.local.core.nav.router"
 }
 
 dependencies {

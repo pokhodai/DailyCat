@@ -42,6 +42,5 @@ class AsyncRecyclerAdapter : ListAdapter<RecyclerState, RecyclerView.ViewHolder>
         asyncListDiffer.submitList(list)
     }
 
-    override fun getItemViewType(position: Int) =
-        baseAdapter.getItemViewType(item = getItem(position))
+    override fun getItemViewType(position: Int) = baseAdapter.getItemViewType(getItem(position))
 }

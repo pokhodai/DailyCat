@@ -1,4 +1,4 @@
-package com.cat.school.local.core.uikit.ui.edit
+package com.cat.school.local.core.uikit.ui.field
 
 import android.content.Context
 import android.content.res.ColorStateList

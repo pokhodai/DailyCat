@@ -3,9 +3,8 @@ package com.cat.school.local.feature.event.create.decoration
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.cat.school.local.core.uikit.ui.edit.TextFieldItem
-import com.cat.school.local.core.uikit.ui.edit.TextFieldItemView
-import com.cat.school.local.core.uikit.utils.ViewDimension
+import com.cat.school.local.core.uikit.ui.field.TextFieldItemView
+import com.cat.school.local.core.uikit.base.ViewDimension
 
 class CreaterEventDecoration : RecyclerView.ItemDecoration() {
 

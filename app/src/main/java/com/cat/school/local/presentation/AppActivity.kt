@@ -17,9 +17,9 @@ import com.cat.school.local.common.ext.showSnackBar
 import com.cat.school.local.core.model.ScreenKeyEntry
 import com.cat.school.local.databinding.ActivityMainBinding
 import com.cat.school.local.model.TabItemEntry
-import com.cat.school.local.nav.holders.RootNavHolder
-import com.cat.school.local.nav.providers.ContainerNavProvider
-import com.cat.school.local.nav.providers.RootNavProvider
+import com.cat.school.local.nav.holders.RootNavRouterHolder
+import com.cat.school.local.nav.providers.ContainerNavRouterProvider
+import com.cat.school.local.nav.providers.RootNavRouterProvider
 import com.cat.school.local.screens.BottomNavScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
@@ -27,7 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class AppActivity : FragmentActivity(), RootNavProvider {
+class AppActivity : FragmentActivity(), RootNavRouterProvider {
 
     private var _binding: ActivityMainBinding? = null
     private val binding: ActivityMainBinding
@@ -38,7 +38,7 @@ class AppActivity : FragmentActivity(), RootNavProvider {
     private var onBackStackChangedListener: FragmentManager.OnBackStackChangedListener? = null
 
     @Inject
-    lateinit var rootNavHolder: RootNavHolder
+    lateinit var rootNavRouterHolder: RootNavRouterHolder
 
     private var isHandleOnBackOnce: Boolean = false
 
@@ -48,16 +48,16 @@ class AppActivity : FragmentActivity(), RootNavProvider {
             val backStackEntry = container?.childFragmentManager?.backStackEntryCount ?: 0
             when {
                 backStackEntry >= 1 -> {
-                    rootNavHolder.pop()
+                    rootNavRouterHolder.pop()
                 }
                 !isHandleOnBackOnce -> {
                     isHandleOnBackOnce = true
-                    if (container is ContainerNavProvider) {
+                    if (container is ContainerNavRouterProvider) {
                         container.onShowSnackBar("Нажмите еще раз для выхода")
                     }
                 }
                 isHandleOnBackOnce -> {
-                    rootNavHolder.pop()
+                    rootNavRouterHolder.pop()
                 }
             }
         }
@@ -84,12 +84,12 @@ class AppActivity : FragmentActivity(), RootNavProvider {
     override fun onResume() {
         super.onResume()
         onResetHandleBackPressedOnce()
-        rootNavHolder.setProvider(this)
+        rootNavRouterHolder.setProvider(this)
         onBackPressedDispatcher.addCallback(onBackPressedCallback)
     }
 
     override fun onPause() {
-        rootNavHolder.removeProvider()
+        rootNavRouterHolder.removeProvider()
         onBackPressedCallback.remove()
         super.onPause()
     }
@@ -109,7 +109,7 @@ class AppActivity : FragmentActivity(), RootNavProvider {
     private fun getVisibleFragmentContainer(): Fragment? {
         val fm = supportFragmentManager
         val fragments = fm.fragments
-        return fragments.find { it.isVisible && it is ContainerNavProvider }
+        return fragments.find { it.isVisible && it is ContainerNavRouterProvider }
     }
 
     override fun onResetHandleBackPressedOnce() {
@@ -127,7 +127,7 @@ class AppActivity : FragmentActivity(), RootNavProvider {
         onBackStackChangedListener = null
         val container = getVisibleFragmentContainer()
         val onBackStackChangedListener = FragmentManager.OnBackStackChangedListener {
-            if (container is ContainerNavProvider) {
+            if (container is ContainerNavRouterProvider) {
                 viewModel.onChangeVisibilityBottomNavigation(container.getScreenName())
             }
             onBackStackChangedListener?.let { listener ->
@@ -141,7 +141,7 @@ class AppActivity : FragmentActivity(), RootNavProvider {
 
     override fun getCicerone(): Cicerone<Router>? {
         val fragment = getVisibleFragmentContainer()
-        return if (fragment is ContainerNavProvider) {
+        return if (fragment is ContainerNavRouterProvider) {
             fragment.getCicerone()
         } else {
             null
@@ -150,7 +150,7 @@ class AppActivity : FragmentActivity(), RootNavProvider {
 
     override fun getRouter(): Router? {
         val fragment = getVisibleFragmentContainer()
-        return if (fragment is ContainerNavProvider) {
+        return if (fragment is ContainerNavRouterProvider) {
             fragment.getRouter()
         } else {
             null
@@ -159,7 +159,7 @@ class AppActivity : FragmentActivity(), RootNavProvider {
 
     override fun getScreenName(): ScreenKeyEntry? {
         val fragment = getVisibleFragmentContainer()
-        return if (fragment is ContainerNavProvider) {
+        return if (fragment is ContainerNavRouterProvider) {
             fragment.getScreenName()
         } else {
             null

@@ -2,7 +2,7 @@ package com.cat.school.local.core.uikit.ui.checkbox
 
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
-import com.cat.school.local.core.uikit.utils.ViewDimension
+import com.cat.school.local.core.uikit.base.ViewDimension
 
 class CheckboxCompositeItem {
 

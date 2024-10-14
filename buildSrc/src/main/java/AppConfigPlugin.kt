@@ -1,12 +1,12 @@
-package com.cat.school.local.buildSrc
+package com.cat.daily.local.buildSrc
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import com.android.build.gradle.BaseExtension
 import org.gradle.api.JavaVersion
-import com.cat.school.local.buildSrc.config.AppConfig
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.cat.daily.local.buildSrc.config.AppConfig
 
 class AppConfigPlugin : Plugin<Project> {
     override fun apply(target: Project) {

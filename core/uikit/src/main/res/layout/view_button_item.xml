@@ -30,7 +30,7 @@
                 tools:src="@drawable/ic_cheveron_right"
                 tools:visibility="visible" />
 
-            <com.cat.school.local.core.uikit.base.text.BaseTextItemView
+            <com.cat.daily.local.core.uikit.base.text.BaseTextItemView
                 android:id="@+id/button_item_text"
                 android:textAppearance="@style/Bold.14"
                 tools:text="Buttonsldklkdsdkl"

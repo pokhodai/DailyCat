@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
+        <com.cat.daily.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/field_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
+        <com.cat.daily.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/field_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

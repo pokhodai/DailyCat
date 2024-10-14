@@ -1,4 +1,4 @@
-import com.cat.school.local.buildSrc.AppConfigPlugin
+import com.cat.daily.local.buildSrc.AppConfigPlugin
 
 plugins {
     id(libs.plugins.android.library.get().pluginId)
@@ -10,7 +10,7 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.feature.settings"
+    namespace = "com.cat.daily.local.feature.settings"
 
     buildFeatures {
         viewBinding = true

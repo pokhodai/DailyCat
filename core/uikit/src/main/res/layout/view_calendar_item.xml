@@ -15,7 +15,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="4dp">
 
-        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
+        <com.cat.daily.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/calendar_item_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="20" />
 
-        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
+        <com.cat.daily.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/calendar_item_month"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             app:layout_constraintTop_toBottomOf="@+id/calendar_item_number"
             tools:text="Mon" />
 
-        <com.cat.school.local.core.uikit.badge.BadgeItemView
+        <com.cat.daily.local.core.uikit.badge.BadgeItemView
             android:id="@+id/calendar_item_badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

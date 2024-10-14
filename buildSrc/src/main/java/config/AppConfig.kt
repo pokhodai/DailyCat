@@ -1,4 +1,4 @@
-package com.cat.school.local.buildSrc.config
+package com.cat.daily.local.buildSrc.config
 
 object AppConfig {
     const val COMPILE_SDK = 34

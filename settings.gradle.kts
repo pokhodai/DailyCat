@@ -25,11 +25,10 @@ rootProject.name = "CatSchoolApp"
 include(":app")
 
 include(
-    ":core:nav-router",
+    ":core:router",
     ":core:uikit",
-    ":core:common",
-    ":core:recycler-adapter",
-    ":core:database",
+    ":core:assist",
+    ":core:recycler",
 )
 
 include(":feature:today")

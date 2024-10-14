@@ -13,7 +13,7 @@
         app:elevation="0dp"
         android:background="@color/transparent">
 
-        <com.cat.school.local.core.uikit.toolbar.ToolbarItemView
+        <com.cat.daily.local.core.uikit.toolbar.ToolbarItemView
             android:id="@+id/creater_assignments_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
-            <com.cat.school.local.core.uikit.base.text.BaseTextItemView
+            <com.cat.daily.local.core.uikit.base.text.BaseTextItemView
                 android:id="@+id/creater_assignments_hint_title"
                 android:textAppearance="@style/Regular.14.colorText1"
                 android:layout_width="0dp"

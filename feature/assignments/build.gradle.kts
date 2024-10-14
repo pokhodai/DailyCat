@@ -1,4 +1,4 @@
-import com.cat.school.local.buildSrc.AppConfigPlugin
+import com.cat.daily.local.buildSrc.AppConfigPlugin
 
 plugins {
     id(libs.plugins.android.library.get().pluginId)
@@ -10,7 +10,7 @@ plugins {
 apply<AppConfigPlugin>()
 
 android {
-    namespace = "com.cat.school.feature.assignments"
+    namespace = "com.cat.daily.local.feature.assignments"
 
     buildFeatures {
         viewBinding = true
@@ -29,7 +29,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    implementation(project(path = ":core:common"))
-    implementation(project(path = ":core:recycler-adapter"))
+    implementation(project(path = ":core:assist"))
+    implementation(project(path = ":core:recycler"))
     implementation(project(path = ":core:uikit"))
 }

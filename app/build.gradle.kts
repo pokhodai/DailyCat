@@ -36,7 +36,6 @@ dependencies {
     implementation(project(path = ":core:nav-router"))
     implementation(project(path = ":core:uikit"))
     implementation(project(path = ":core:common"))
-    implementation(project(path = ":core:database"))
 
     implementation(project(path = ":feature:assignments"))
     implementation(project(path = ":feature:schedule"))

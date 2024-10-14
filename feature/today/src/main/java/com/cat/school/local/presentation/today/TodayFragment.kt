@@ -9,16 +9,19 @@ import androidx.fragment.app.viewModels
 import com.cat.school.core.common.Keys
 import com.cat.school.core.common.ext.autoClean
 import com.cat.school.core.common.ext.viewBinding
-import com.cat.school.local.core.provider.FragmentProvider
+import com.cat.school.local.core.model.ScreenModel
+import com.cat.school.local.core.nav.provider.FragmentNavRouterProvider
 import com.cat.school.local.core.recycler.adapter.AsyncRecyclerAdapter
 import com.cat.school.local.feature.today.R
 import com.cat.school.local.feature.today.databinding.FragmentTodayBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TodayFragment : Fragment(R.layout.fragment_today) {
+class TodayFragment : Fragment(R.layout.fragment_today), FragmentNavRouterProvider {
 
     private val binding by viewBinding { FragmentTodayBinding.bind(it) }
+
+    override fun getScreen() = ScreenModel.Today
 
     private val viewModel by viewModels<TodayViewModel>()
     private val todayDatesAdapter by autoClean { AsyncRecyclerAdapter() }

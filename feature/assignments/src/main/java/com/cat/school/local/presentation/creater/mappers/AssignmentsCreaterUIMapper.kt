@@ -2,7 +2,7 @@ package com.cat.school.local.presentation.creater.mappers
 
 import com.cat.school.core.common.managers.ResManager
 import com.cat.school.feature.assignments.R
-import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
+import com.cat.school.local.core.uikit.toolbar.ToolbarItem
 import javax.inject.Inject
 import com.cat.school.local.core.uikit.R as uikitR
 

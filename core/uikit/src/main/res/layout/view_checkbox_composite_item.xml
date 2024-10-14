@@ -20,14 +20,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.cat.school.local.core.uikit.ui.checkbox.view.CheckboxItemView
+            <com.cat.school.local.core.uikit.checkbox.view.CheckboxItemView
                 android:id="@+id/checkbox_composite_item_check"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
         </FrameLayout>
 
-        <com.google.android.material.textview.MaterialTextView
+        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/checkbox_composite_item_name"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -55,7 +55,7 @@
             tools:src="@drawable/ic_trash"
             tools:visibility="visible" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/checkbox_composite_item_note"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

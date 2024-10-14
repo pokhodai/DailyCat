@@ -22,4 +22,5 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(project(path = ":core:recycler-adapter"))
+    implementation(project(path = ":core:common"))
 }

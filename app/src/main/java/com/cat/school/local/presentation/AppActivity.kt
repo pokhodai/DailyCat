@@ -14,9 +14,9 @@ import com.cat.school.core.common.ext.observe
 import com.cat.school.local.R
 import com.cat.school.local.common.ext.addItem
 import com.cat.school.local.common.ext.showSnackBar
-import com.cat.school.local.core.model.ScreenKeyEntry
-import com.cat.school.local.databinding.ActivityMainBinding
+import com.cat.school.local.core.model.ScreenModel
 import com.cat.school.local.model.TabItemEntry
+import com.cat.school.local.databinding.ActivityMainBinding
 import com.cat.school.local.nav.holders.RootNavRouterHolder
 import com.cat.school.local.nav.providers.ContainerNavRouterProvider
 import com.cat.school.local.nav.providers.RootNavRouterProvider
@@ -69,10 +69,10 @@ class AppActivity : FragmentActivity(), RootNavRouterProvider {
         setContentView(binding.root)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         setBottomNavigationMenu()
+        setObservable()
         if (savedInstanceState == null) {
             binding.appActivityBottomNavigation.selectedItemId = TabItemEntry.TODAY.idRes
         }
-        setObservable()
     }
 
     private fun setObservable() = with(viewModel) {
@@ -102,7 +102,6 @@ class AppActivity : FragmentActivity(), RootNavRouterProvider {
                 iconRes = it.iconRes
             )
         }
-
         binding.appActivityBottomNavigation.setOnItemSelectedListener(::onItemSelected)
     }
 
@@ -128,7 +127,7 @@ class AppActivity : FragmentActivity(), RootNavRouterProvider {
         val container = getVisibleFragmentContainer()
         val onBackStackChangedListener = FragmentManager.OnBackStackChangedListener {
             if (container is ContainerNavRouterProvider) {
-                viewModel.onChangeVisibilityBottomNavigation(container.getScreenName())
+                viewModel.onChangeVisibilityBottomNavigation(container.getScreen())
             }
             onBackStackChangedListener?.let { listener ->
                 container?.childFragmentManager?.removeOnBackStackChangedListener(listener)
@@ -157,10 +156,10 @@ class AppActivity : FragmentActivity(), RootNavRouterProvider {
         }
     }
 
-    override fun getScreenName(): ScreenKeyEntry? {
+    override fun getScreen(): ScreenModel? {
         val fragment = getVisibleFragmentContainer()
         return if (fragment is ContainerNavRouterProvider) {
-            fragment.getScreenName()
+            fragment.getScreen()
         } else {
             null
         }

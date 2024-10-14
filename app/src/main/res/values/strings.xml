@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CatDaily</string>
+
     <string name="tab_first_menu_today">Today</string>
     <string name="tab_second_menu_schedule">Schedule</string>
     <string name="tab_third_menu_assignments">Assignments</string>
@@ -10,9 +11,4 @@
     <item type="id" name="tab_assignments_id"/>
     <item type="id" name="tab_schedule_id"/>
     <item type="id" name="tab_settings_id"/>
-
-    <item type="id" name="tab_container_today_id"/>
-    <item type="id" name="tab_container_assignments_id"/>
-    <item type="id" name="tab_container_schedule_id"/>
-    <item type="id" name="tab_container_settings_id"/>
 </resources>

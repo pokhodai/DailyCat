@@ -30,5 +30,6 @@ dependencies {
     ksp(libs.hilt.android.compiler)
 
     implementation(project(path = ":core:common"))
+    implementation(project(path = ":core:recycler-adapter"))
     implementation(project(path = ":core:uikit"))
 }

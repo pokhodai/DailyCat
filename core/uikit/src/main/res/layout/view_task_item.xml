@@ -91,7 +91,7 @@
             app:layout_constraintStart_toStartOf="@+id/task_item_left"
             tools:text="08:00 AM" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/task_item_reminder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
             tools:text="Now"
             tools:visibility="visible" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/task_item_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
             tools:tint="@color/warningColor0"
             tools:visibility="visible" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <com.cat.school.local.core.uikit.base.text.BaseTextItemView
             android:id="@+id/task_item_place"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
             app:layout_constraintTop_toBottomOf="@+id/task_item_place"
             tools:visibility="visible">
 
-            <com.cat.school.local.core.uikit.ui.badge.BadgeItemView
+            <com.cat.school.local.core.uikit.badge.BadgeItemView
                 android:id="@+id/task_item_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

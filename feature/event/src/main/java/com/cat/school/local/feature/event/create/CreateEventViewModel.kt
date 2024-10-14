@@ -5,9 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.cat.school.core.common.managers.ResManager
 import com.cat.school.local.core.nav.router.NavRouter
 import com.cat.school.local.core.recycler.RecyclerState
-import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
+import com.cat.school.local.core.uikit.toolbar.ToolbarItem
 import com.cat.school.local.feature.event.R
-import com.cat.school.local.feature.event.api.CreateEventModel
 import com.cat.school.local.feature.event.create.mapper.CreateEventMapper
 import com.cat.school.local.feature.event.create.states.CreateEventErrorState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,18 +29,13 @@ class CreateEventViewModel @Inject constructor(
 
     private var errorState = CreateEventErrorState()
 
-    private var createEventModel = CreateEventModel(
-        name = "",
-        place = null
-    )
-
     init {
         updateToolbar()
         updateItems()
     }
 
     private fun updateToolbar() {
-        val name = createEventModel.name
+        val name = ""
         val isSave = name.trim().isNotEmpty()
         _toolbarEventFlow.value = createEventMapper.mapCreateEventToolbarItemState(
             isSave = isSave,
@@ -63,7 +57,7 @@ class CreateEventViewModel @Inject constructor(
         val hintPlace = resManager.getString(R.string.create_event_hint_place)
         _listEventFlow.value = listOf(
             createEventMapper.mapTextFieldEvent(
-                value = createEventModel.name,
+                value = "",
                 label = labelName,
                 hint = hintName,
                 focusId = labelPlace,
@@ -72,7 +66,7 @@ class CreateEventViewModel @Inject constructor(
                 onChangeValue = ::onChangeName
             ),
             createEventMapper.mapTextFieldEvent(
-                value = createEventModel.place.orEmpty(),
+                value = "",
                 label = labelPlace,
                 hint = hintPlace,
                 imeOption = EditorInfo.IME_ACTION_DONE,
@@ -92,12 +86,10 @@ class CreateEventViewModel @Inject constructor(
     }
 
     private fun onChangePlace(place: String) {
-        createEventModel = createEventModel.copy(place = place)
         updateToolbar()
     }
 
     private fun onChangeName(name: String) {
-        createEventModel = createEventModel.copy(name = name)
         updateToolbar()
     }
 }

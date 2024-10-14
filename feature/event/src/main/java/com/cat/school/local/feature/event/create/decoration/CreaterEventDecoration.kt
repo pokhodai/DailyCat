@@ -3,14 +3,14 @@ package com.cat.school.local.feature.event.create.decoration
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.cat.school.local.core.uikit.ui.field.TextFieldItemView
-import com.cat.school.local.core.uikit.base.ViewDimension
+import com.cat.school.local.core.uikit.field.TextFieldItemView
+import com.cat.school.local.core.uikit.base.value.DimensionValue
 
 class CreaterEventDecoration : RecyclerView.ItemDecoration() {
 
-    private val leftPadding = ViewDimension.Dp(16)
-    private val rightPadding = ViewDimension.Dp(16)
-    private val topPadding = ViewDimension.Dp(16)
+    private val leftPadding = DimensionValue.Dp(16)
+    private val rightPadding = DimensionValue.Dp(16)
+    private val topPadding = DimensionValue.Dp(16)
 
     override fun getItemOffsets(
         outRect: Rect,

@@ -82,4 +82,5 @@
     <style name="Regular.12.colorText0">
         <item name="android:textColor">@color/textColor0</item>
     </style>
+
 </resources>

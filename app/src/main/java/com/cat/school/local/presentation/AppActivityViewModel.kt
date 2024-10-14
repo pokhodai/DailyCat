@@ -1,12 +1,9 @@
 package com.cat.school.local.presentation
 
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavController
-import com.cat.school.core.common.Keys
-import com.cat.school.local.core.model.ScreenKeyEntry
+import com.cat.school.local.core.model.ScreenModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
@@ -17,9 +14,9 @@ class AppActivityViewModel @Inject constructor(
     private val _changeVisibilityBottomNavFlow = MutableStateFlow<Boolean>(true)
     val changeVisibilityBottomNavFlow = _changeVisibilityBottomNavFlow.asStateFlow()
 
-    fun onChangeVisibilityBottomNavigation(screenName: ScreenKeyEntry?) {
-        _changeVisibilityBottomNavFlow.value = when(screenName) {
-            ScreenKeyEntry.CREATE_EVENT -> false
+    fun onChangeVisibilityBottomNavigation(screen: ScreenModel?) {
+        _changeVisibilityBottomNavFlow.value = when(screen) {
+            is ScreenModel.CreateEvent -> false
             else -> true
         }
     }

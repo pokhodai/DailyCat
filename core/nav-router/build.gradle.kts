@@ -5,6 +5,7 @@ plugins {
     id(libs.plugins.jetbrains.kotlin.android.get().pluginId)
     id(libs.plugins.google.devtools.ksp.get().pluginId)
     id(libs.plugins.google.dagger.hilt.get().pluginId)
+    id("kotlin-parcelize")
 }
 
 apply<AppConfigPlugin>()

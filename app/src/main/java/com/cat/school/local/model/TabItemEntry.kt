@@ -4,7 +4,6 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.StringRes
 import com.cat.school.local.R
-import com.cat.school.local.core.model.ScreenKeyEntry
 
 enum class TabItemEntry(
     @IdRes val idRes: Int,

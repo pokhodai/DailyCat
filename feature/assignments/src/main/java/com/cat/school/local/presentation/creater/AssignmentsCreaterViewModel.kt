@@ -1,7 +1,7 @@
 package com.cat.school.local.presentation.creater
 
 import androidx.lifecycle.ViewModel
-import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
+import com.cat.school.local.core.uikit.toolbar.ToolbarItem
 import com.cat.school.local.presentation.creater.mappers.AssignmentsCreaterUIMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

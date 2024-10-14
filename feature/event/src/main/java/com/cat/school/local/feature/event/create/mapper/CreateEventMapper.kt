@@ -3,9 +3,9 @@ package com.cat.school.local.feature.event.create.mapper
 import android.view.inputmethod.EditorInfo
 import com.cat.school.core.common.managers.ResManager
 import com.cat.school.local.core.recycler.RecyclerState
-import com.cat.school.local.core.uikit.base.IconState
-import com.cat.school.local.core.uikit.ui.field.TextFieldItem
-import com.cat.school.local.core.uikit.ui.toolbar.ToolbarItem
+import com.cat.school.local.core.uikit.base.value.ImageValue
+import com.cat.school.local.core.uikit.field.TextFieldItem
+import com.cat.school.local.core.uikit.toolbar.ToolbarItem
 import com.cat.school.local.feature.event.R
 import javax.inject.Inject
 import com.cat.school.local.core.uikit.R as uikitR
@@ -26,7 +26,7 @@ class CreateEventMapper @Inject constructor(
             } else {
                 null
             },
-            leading = IconState(
+            leading = ImageValue(
                 value = uikitR.drawable.ic_chevron_left,
                 tint = uikitR.color.actionColor0
             ),

@@ -8,11 +8,11 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import com.cat.school.local.core.model.ScreenKeyEntry
-import com.cat.school.local.core.provider.FragmentProvider
+import com.cat.school.local.core.model.ScreenModel
 import com.cat.school.local.model.TabItemEntry
-import com.cat.school.local.nav.providers.ContainerNavRouterProvider
+import com.cat.school.local.core.nav.provider.FragmentNavRouterProvider
 import com.cat.school.local.nav.holders.ContainerNavRouterHolder
+import com.cat.school.local.nav.providers.ContainerNavRouterProvider
 import com.cat.school.local.screens.BottomNavScreens
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Navigator
@@ -57,10 +57,10 @@ class ContainerFragment : Fragment(), ContainerNavRouterProvider {
 
     }
 
-    override fun getScreenName(): ScreenKeyEntry? {
+    override fun getScreen(): ScreenModel? {
         val last = childFragmentManager.fragments.lastOrNull()
-        return if (last is FragmentProvider) {
-            last.getScreenKey()
+        return if (last is FragmentNavRouterProvider) {
+            last.getScreen()
         } else {
             null
         }

@@ -1,4 +1,4 @@
-import com.cat.daily.local.buildSrc.AppConfigPlugin
+import com.cat.daily.local.buildSrc.plugin.AppConfigPlugin
 
 plugins {
     id(libs.plugins.android.application.get().pluginId)
@@ -19,6 +19,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.core.ktx)
+
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
 

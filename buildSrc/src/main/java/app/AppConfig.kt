@@ -35,6 +35,22 @@ object AppConfig {
         }
     }
 
+    fun checkAppOrLib(project: Project) {
+        var isPlugin = false
+
+        project.plugins.withId("com.android.application") {
+            isPlugin = true
+        }
+
+        project.plugins.withId("com.android.library") {
+            isPlugin = true
+        }
+
+        if (!isPlugin) {
+            throw Exception("Добавьте com.android.library или com.android.application")
+        }
+    }
+
     fun configureAndroid(project: Project) {
         project.extensions.configure<BaseExtension> {
             compileSdkVersion(COMPILE_SDK )

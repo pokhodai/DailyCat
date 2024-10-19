@@ -1,14 +1,6 @@
-import com.cat.daily.local.buildSrc.plugin.AppConfigPlugin
-
 plugins {
-    id(libs.plugins.android.application.get().pluginId)
-    id(libs.plugins.jetbrains.kotlin.android.get().pluginId)
-    id(libs.plugins.google.devtools.ksp.get().pluginId)
-    id(libs.plugins.google.dagger.hilt.get().pluginId)
-    id(libs.plugins.kotlin.parcelize.get().pluginId)
+    id("app-config-plugin")
 }
-
-apply<AppConfigPlugin>()
 
 android {
     namespace = "com.cat.daily.local"
@@ -19,19 +11,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
-
-    implementation(libs.androidx.activity.ktx)
-    implementation(libs.androidx.fragment.ktx)
-
-    implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-
-    implementation(libs.cicerone)
-
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
-
     implementation(project(path = ":core:router"))
     implementation(project(path = ":core:uikit"))
     implementation(project(path = ":core:assist"))

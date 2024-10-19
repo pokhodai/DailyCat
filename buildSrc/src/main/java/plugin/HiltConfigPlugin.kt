@@ -10,19 +10,7 @@ import com.cat.daily.local.buildSrc.lib.KspLib
 
 class HiltConfigPlugin : Plugin<Project> {
     override fun apply(target: Project) {
-        var isPlugin = false
-
-        target.plugins.withId("com.android.application") {
-            isPlugin = true
-        }
-
-        target.plugins.withId("com.android.library") {
-            isPlugin = true
-        }
-
-        if (!isPlugin) {
-            throw Exception("Добавьте com.android.library или com.android.application")
-        }
+        AppConfig.checkAppOrLib(target)
 
         val versionCatalogs = target.extensions.getByType<VersionCatalogsExtension>()
         val libs = versionCatalogs.named("libs")

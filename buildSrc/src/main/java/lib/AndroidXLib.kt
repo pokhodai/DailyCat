@@ -50,6 +50,20 @@ object AndroidXLib : BaseLib() {
         )
     }
 
+    fun getAndroidXActivityKtx(
+        libs: VersionCatalog
+    ): DepConfig {
+        val activityLib = libs.findLibrary("androidx-activity-ktx").get()
+        val dependency = getDependency(
+            module = "${activityLib.get().module}",
+            version = "${activityLib.get().version}"
+        )
+        return DepConfig(
+            method = MethodConfig.IMPL,
+            dependency = dependency,
+        )
+    }
+
     fun getAndroidXAppCompat(
         libs: VersionCatalog,
     ): DepConfig {

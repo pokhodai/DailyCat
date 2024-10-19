@@ -1,12 +1,12 @@
 package com.cat.daily.local.buildSrc.plugin
 
+import com.cat.daily.local.buildSrc.app.AppConfig
+import com.cat.daily.local.buildSrc.lib.AndroidXLib
+import com.cat.daily.local.buildSrc.lib.CiceroneLib
+import com.cat.daily.local.buildSrc.lib.MaterialLib
+import com.cat.daily.local.buildSrc.lib.ParcelizeLib
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.configure
-import com.android.build.gradle.BaseExtension
-import org.gradle.api.JavaVersion
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.cat.daily.local.buildSrc.app.AppConfig
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.getByType
 
@@ -21,7 +21,26 @@ class AppConfigPlugin : Plugin<Project> {
 
         target.plugins.apply(androidAppId)
         target.plugins.apply(jetbrainsKotlinAndroidId)
-
+        target.plugins.apply("hilt-config-plugin")
+        ParcelizeLib.configure(
+            libs = libs,
+            target = target
+        )
         AppConfig.configureAndroid(target)
+
+        val list = listOf(
+            AndroidXLib.getAndroidXCoreKtx(libs),
+            AndroidXLib.getAndroidXConstraintLayout(libs),
+            AndroidXLib.getAndroidXAppCompat(libs),
+            AndroidXLib.getAndroidXFragmentKtx(libs),
+            AndroidXLib.getAndroidXActivityKtx(libs),
+            MaterialLib.getMaterial(libs),
+            CiceroneLib.get(libs),
+        )
+
+        AppConfig.setDependency(
+            list = list,
+            target = target,
+        )
     }
 }

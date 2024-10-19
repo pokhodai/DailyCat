@@ -24,5 +24,4 @@ object KspLib {
 
         return isKsp
     }
-
 }

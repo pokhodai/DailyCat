@@ -4,6 +4,7 @@ import android.content.res.ColorStateList
 import android.widget.ImageView
 import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
+import com.cat.daily.local.core.uikit.base.value.ColorValue
 import com.cat.daily.local.core.uikit.base.value.ImageValue
 
 fun ImageView.bindImageOptional(value: ImageValue?) {
@@ -13,8 +14,17 @@ fun ImageView.bindImageOptional(value: ImageValue?) {
     } ?: false
 }
 
+fun ImageView.setTint(colorValue: ColorValue?) {
+    imageTintList = colorValue?.let {
+        ColorStateList(
+            arrayOf(intArrayOf(android.R.attr.state_enabled)),
+            intArrayOf(getColor(colorValue))
+        )
+    }
+}
+
 fun ImageView.setTint(@ColorInt colorInt: Int) {
-    ColorStateList(
+    imageTintList = ColorStateList(
         arrayOf(intArrayOf(android.R.attr.state_enabled)),
         intArrayOf(colorInt)
     )
@@ -22,7 +32,7 @@ fun ImageView.setTint(@ColorInt colorInt: Int) {
 
 fun ImageView.load(value: ImageValue) {
     setImageResource(value.value)
-    imageTintList = value.tint?.let(::getColorStateList)
+    setTint(value.tint)
     scaleType = value.scaleType
     makeRounded(value.roundValue)
 }

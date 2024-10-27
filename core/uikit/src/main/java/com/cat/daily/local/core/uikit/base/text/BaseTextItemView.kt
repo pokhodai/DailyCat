@@ -7,7 +7,7 @@ import com.cat.daily.local.core.recycler.RecyclerItemView
 import com.cat.daily.local.core.uikit.base.ext.applyMargin
 import com.cat.daily.local.core.uikit.base.ext.applyPadding
 import com.cat.daily.local.core.uikit.base.ext.load
-import com.cat.daily.local.core.uikit.base.ext.setBackground
+import com.cat.daily.local.core.uikit.base.ext.setBackgroundView
 import com.cat.daily.local.core.uikit.base.ext.setSizeValue
 
 class BaseTextItemView @JvmOverloads constructor(
@@ -19,7 +19,7 @@ class BaseTextItemView @JvmOverloads constructor(
     override fun bindState(state: BaseTextItem.State) {
         load(state.value)
         setSizeValue(state.sizeValue)
-        setBackground(state.background)
+        setBackgroundView(state.background)
         applyMargin(state.margins)
         applyPadding(state.padding)
     }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
 import com.cat.daily.local.core.assist.ext.showSnackBar
 import com.cat.daily.local.presentation.container.holder.ContainerRouterHolder
 import com.cat.daily.local.presentation.container.provider.IContainerRouterProvider
@@ -77,7 +78,7 @@ class ContainerFragment : Fragment(), IContainerRouterProvider {
         savedInstanceState: Bundle?
     ): View {
         val containerFragment = childFragmentManager.findFragmentById(containerId)
-        val tabContainer = FrameLayout(requireContext())
+        val tabContainer = FragmentContainerView(requireContext())
         tabContainer.layoutParams = ViewGroup.LayoutParams(
             MATCH_PARENT,
             MATCH_PARENT

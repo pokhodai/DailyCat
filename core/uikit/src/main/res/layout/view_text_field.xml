@@ -30,6 +30,10 @@
             style="@style/TextInputLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:padding="0dp"
+            app:boxBackgroundMode="outline"
+            app:boxCollapsedPaddingTop="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/field_label">
@@ -37,9 +41,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/field_input"
                 style="@style/TextEditTextStyle"
+                android:layout_height="45dp"
+                android:minHeight="0dp"
                 android:textCursorDrawable="@null"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:padding="0dp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

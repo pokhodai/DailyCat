@@ -6,14 +6,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
-import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
 import com.cat.daily.local.core.recycler.RecyclerItemView
 import com.cat.daily.local.core.uikit.badge.BadgeItem
 import com.cat.daily.local.core.uikit.base.ext.applyPadding
 import com.cat.daily.local.core.uikit.base.ext.bindTextOptional
 import com.cat.daily.local.core.uikit.base.ext.makeRounded
+import com.cat.daily.local.core.uikit.base.ext.setBackgroundView
+import com.cat.daily.local.core.uikit.base.ext.setTextColorValue
 import com.cat.daily.local.core.uikit.base.ext.setTint
+import com.cat.daily.local.core.uikit.base.value.ColorValue
 import com.cat.daily.local.core.uikit.base.value.DimensionValue
 import com.cat.daily.local.core.uikit.checkbox.CheckboxCompositeItem
 import com.cat.daily.local.core.uikit.checkbox.CheckboxCompositeItemView
@@ -56,11 +58,11 @@ class TaskItemView @JvmOverloads constructor(
 
         bindName(
             name = state.name,
-            textColorInt = state.taskColorInt
+            textColor = state.taskColor
         )
 
-        binding.taskItemSettings.setTint(state.taskColorInt)
-        binding.taskItemDivider.setBackgroundColor(state.taskColorInt)
+        binding.taskItemSettings.setTint(state.taskColor)
+        binding.taskItemDivider.setBackgroundView(state.taskColor)
         binding.taskItemReminder.bindTextOptional(state.reminder)
         binding.taskItemPlace.bindTextOptional(state.place)
         binding.taskItemTimeStart.text = state.startTime
@@ -89,10 +91,10 @@ class TaskItemView @JvmOverloads constructor(
 
     private fun bindName(
         name: String,
-        @ColorInt textColorInt: Int
+        textColor: ColorValue
     ) = with(binding.taskItemName) {
         text = name
-        setTextColor(textColorInt)
+        setTextColorValue(textColor)
     }
 
     private fun bindMissingAssignment(assignmentCount: String?) {

@@ -1,7 +1,6 @@
 package com.cat.daily.local.core.uikit.toolbar
 
 import android.content.Context
-import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -17,6 +16,7 @@ import com.cat.daily.local.core.uikit.base.ext.bindImageOptional
 import com.cat.daily.local.core.uikit.base.ext.bindTextOptional
 import com.cat.daily.local.core.uikit.base.ext.getColor
 import com.cat.daily.local.core.uikit.base.ext.makeRippleDrawable
+import com.cat.daily.local.core.uikit.base.ext.setBackgroundView
 import com.cat.daily.local.core.uikit.databinding.ViewToolbarItemBinding
 
 class ToolbarItemView @JvmOverloads constructor(
@@ -65,7 +65,7 @@ class ToolbarItemView @JvmOverloads constructor(
 
     override fun bindState(state: ToolbarItem.State) {
         this.state = state
-        setBackgroundColor(state.backgroundColorInt ?: Color.TRANSPARENT)
+        setBackgroundView(state.backgroundColor)
         binding.toolbarItemTitle.bindTextOptional(state.title)
         binding.toolbarItemLeading.bindImageOptional(state.leading)
         binding.toolbarItemTrailingText.bindTextOptional(state.trailingText)

@@ -11,7 +11,7 @@ import com.cat.daily.local.core.assist.ext.dp
 import com.cat.daily.local.core.uikit.base.ext.applyPadding
 import com.cat.daily.local.core.uikit.base.ext.bindImageOptional
 import com.cat.daily.local.core.uikit.base.ext.getColor
-import com.cat.daily.local.core.uikit.base.ext.setBackground
+import com.cat.daily.local.core.uikit.base.ext.setBackgroundView
 import com.cat.daily.local.core.uikit.base.ext.setWithValue
 import com.cat.daily.local.core.uikit.databinding.ViewButtonItemBinding
 
@@ -38,7 +38,7 @@ class ButtonItemView @JvmOverloads constructor(
 
     override fun bindState(state: ButtonItem.State) {
         onClick = state.onClick
-        setBackground(state.background)
+        setBackgroundView(state.background)
         applyPadding(state.paddings)
         setWithValue(state.width)
         binding.buttonItemTrailing.scaleType

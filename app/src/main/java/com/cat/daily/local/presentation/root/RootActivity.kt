@@ -17,6 +17,8 @@ import com.cat.daily.local.core.assist.ext.observe
 import com.cat.daily.local.core.assist.ext.showSnackBar
 import com.cat.daily.local.core.router.screen.Screen
 import com.cat.daily.local.core.router.screen.ScreenKeys.TAB_ITEM_KEY
+import com.cat.daily.local.core.uikit.base.ext.applyPadding
+import com.cat.daily.local.core.uikit.base.value.DimensionValue
 import com.cat.daily.local.databinding.ActivityMainBinding
 import com.cat.daily.local.presentation.container.ContainerFragment
 import com.cat.daily.local.presentation.container.provider.IContainerRouterProvider
@@ -84,6 +86,14 @@ class RootActivity : FragmentActivity(), IRootRouterProvider {
 
     private fun onChangeVisibility(isVisible: Boolean) {
         binding.appActivityBottomNavigation.isVisible = isVisible
+        val bottomPadding = if (isVisible) {
+            56
+        } else {
+            0
+        }
+        binding.appActivityRootContainer.applyPadding(
+            bottom = DimensionValue.Dp(bottomPadding).value
+        )
     }
 
     override fun onResume() {

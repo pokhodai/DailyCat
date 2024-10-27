@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.annotation.ColorInt
 import com.cat.daily.local.core.recycler.RecyclerState
+import com.cat.daily.local.core.uikit.base.value.ColorValue
 import com.cat.daily.local.core.uikit.base.value.DimensionValue
 import com.cat.daily.local.core.uikit.checkbox.CheckboxCompositeItem
 
@@ -15,7 +16,7 @@ class TaskItem {
         val paddings: DimensionValue.Rect? = null,
         val startTime: String,
         val endTime: String,
-        @ColorInt val taskColorInt: Int,
+        val taskColor: ColorValue,
         val reminder: String? = null,
         val place: String? = null,
         var isExpanded: Boolean = false,

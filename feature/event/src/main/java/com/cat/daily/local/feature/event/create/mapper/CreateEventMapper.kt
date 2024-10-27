@@ -3,6 +3,7 @@ package com.cat.daily.local.feature.event.create.mapper
 import android.view.inputmethod.EditorInfo
 import com.cat.daily.local.core.assist.managers.ResManager
 import com.cat.daily.local.core.recycler.RecyclerState
+import com.cat.daily.local.core.uikit.base.value.ColorValue
 import com.cat.daily.local.core.uikit.base.value.ImageValue
 import com.cat.daily.local.core.uikit.field.TextFieldItem
 import com.cat.daily.local.core.uikit.toolbar.ToolbarItem
@@ -19,6 +20,8 @@ class CreateEventMapper @Inject constructor(
         onClickTrailing: (() -> Unit)? = null,
         onClickBackPressed: () -> Unit,
     ): ToolbarItem.State {
+        val leadingTint = ColorValue.Color(resManager.getColor(uikitR.color.actionColor0))
+        val background = ColorValue.Color(resManager.getColor(uikitR.color.backgroundColor2))
         return ToolbarItem.State(
             id = "create_event_toolbar_id",
             trailingText = if (isSave) {
@@ -28,10 +31,10 @@ class CreateEventMapper @Inject constructor(
             },
             leading = ImageValue(
                 value = uikitR.drawable.ic_chevron_left,
-                tint = uikitR.color.actionColor0
+                tint = leadingTint
             ),
             onClickTrailing = onClickTrailing,
-            backgroundColorInt = resManager.getColor(uikitR.color.backgroundColor2),
+            backgroundColor = background,
             onClickLeading = onClickBackPressed
         )
     }

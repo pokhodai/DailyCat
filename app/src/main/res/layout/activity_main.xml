@@ -8,36 +8,25 @@
     android:background="@color/backgroundColor0"
     tools:context="com.cat.daily.local.presentation.root.RootActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/app_activity_container"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/app_activity_root_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-        <FrameLayout
-            android:id="@+id/app_activity_root_container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toTopOf="@+id/app_activity_bottom_navigation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/app_activity_bottom_navigation"
-            style="@style/Widget.MaterialComponents.BottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/backgroundColor2"
-            app:elevation="0dp"
-            app:itemIconTint="@color/app_activity_bottom_navigation_item_selection"
-            app:itemRippleColor="@color/actionColor0"
-            app:itemTextColor="@color/app_activity_bottom_navigation_item_selection"
-            app:labelVisibilityMode="labeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/app_activity_bottom_navigation"
+        style="@style/Widget.MaterialComponents.BottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/backgroundColor2"
+        app:elevation="0dp"
+        app:layout_anchorGravity="bottom"
+        app:layout_anchor="@id/app_activity_root_container"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        app:itemIconTint="@color/app_activity_bottom_navigation_item_selection"
+        app:itemRippleColor="@color/actionColor0"
+        app:itemTextColor="@color/app_activity_bottom_navigation_item_selection"
+        app:labelVisibilityMode="labeled" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

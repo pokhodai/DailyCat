@@ -35,10 +35,10 @@ fun View.getColor(value: ColorValue?): Int {
         is ColorValue.Res -> getColor(value.value)
         else -> Color.TRANSPARENT
     }
-    return getColor(colorInt)
+    return colorInt
 }
 
-fun View.setBackground(value: ColorValue?) {
+fun View.setBackgroundView(value: ColorValue?) {
     setBackgroundColor(getColor(value))
 }
 

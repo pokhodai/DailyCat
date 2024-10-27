@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
+import kotlin.math.truncate
 
 @HiltViewModel
 class RootViewModel @Inject constructor(
@@ -16,7 +17,7 @@ class RootViewModel @Inject constructor(
 
     fun onChangeVisibilityBottomNavigation(screen: Screen?) {
         _changeVisibilityBottomNavFlow.value = when(screen) {
-            is Screen.CreateEvent -> false
+            is Screen.CreateEvent -> true
             else -> true
         }
     }

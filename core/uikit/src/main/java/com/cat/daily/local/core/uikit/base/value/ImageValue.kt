@@ -6,7 +6,7 @@ import androidx.annotation.DrawableRes
 
 data class ImageValue(
     @DrawableRes val value: Int,
-    @ColorRes val tint: Int? = null,
+    val tint: ColorValue? = null,
     val roundValue: RoundValue? = null,
     val scaleType: ImageView.ScaleType = ImageView.ScaleType.FIT_CENTER,
 )
